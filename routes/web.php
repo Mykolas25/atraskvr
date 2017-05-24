@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::get('/', ['as' => 'app.languages.index','uses' => 'VRPagesCategoriesController@index']);
 
 Route::group(['prefix' => 'admin'], function () {
 
