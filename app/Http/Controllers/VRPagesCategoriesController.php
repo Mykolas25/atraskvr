@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VRPagesCategories;
+use App\Models\VRResources;
 use Illuminate\Http\Request;
 
 class VRPagesCategoriesController extends Controller
@@ -15,7 +16,8 @@ class VRPagesCategoriesController extends Controller
     public function index()
     {
         $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
-        return view('content.pages', $config);
+        $resources['resource'] = VRResources::get()->toArray();
+        return view('pages', $config, $resources);
 
     }
 

@@ -15,7 +15,11 @@
 //    return view('welcome');
 //});
 
-Route::get('/', ['as' => 'app.languages.index','uses' => 'VRPagesCategoriesController@index']);
+
+Route::get('/', ['as' => 'app.pages.index','uses' => 'VRPagesCategoriesController@index']);
+
+
+
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -234,5 +238,17 @@ Route::group(['prefix' => 'admin'], function () {
 
         });
     });
+
+
+    ///Resource upload admin routes
+
+    Route::group(['prefix' => 'upload'], function () {
+
+        Route::get('/', ['as' => 'app.upload.index','uses' => 'VRResourceController@uploadShow']);
+        Route::post('/', ['as' => 'app.resource.store', 'uses' => 'VRResourceController@store']);
+
+    });
+
+
 
 });
