@@ -6,6 +6,7 @@ use App\Models\VRPagesCategories;
 use App\Models\VRResources;
 use Illuminate\Http\Request;
 
+
 class VRPagesCategoriesController extends Controller
 {
     /**
@@ -18,6 +19,18 @@ class VRPagesCategoriesController extends Controller
         $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
         $resources['resource'] = VRResources::get()->toArray();
         return view('pages', $config, $resources);
+    }
+
+    public function adminIndex()
+    {
+
+        $configuration['tableName'] = 'categories';
+        $configuration['list'] = VRPagesCategories::get()->toArray();
+        return view('admin.list', $configuration);
+
+//        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
+//        $resources['resource'] = VRResources::get()->toArray();
+//        return view('pages', $config, $resources);
 
     }
 
@@ -26,6 +39,34 @@ class VRPagesCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+    public function adminCreate()
+    {
+        $modelData = new VRPagesCategories();
+        $configuration['tableName'] = 'categories';
+        $configuration['fields']    = $modelData->getFillables();
+        return view('admin.create', $configuration);
+    }
+
+
+    public function adminStore(Request $request)
+    {
+        $data = request()->all();
+
+        VRPagesCategories::create([
+            'id' => $data['id']
+        ]);
+
+        $resourceStore = new VRResourceController();
+        $resourceStore->getResourceStore($data);
+
+
+        return redirect()->route('app.categories.index');
+    }
+
+
     public function create()
     {
         //

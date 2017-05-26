@@ -12,6 +12,7 @@ class VRUploadController extends Controller
 {
     public function upload (UploadedFile $file)
     {
+
         $data =
             [
                 "size" => $file->getSize(),
@@ -26,5 +27,6 @@ class VRUploadController extends Controller
         $data['path'] = $path . $filename;
 
         return VRResources::create($data);
+
     }
 }
