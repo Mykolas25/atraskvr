@@ -95,6 +95,11 @@ class VRPagesController extends Controller {
         //       dd($data);
         VRPagesTranslations::create($data);
         $configuration['comment'] = ['message' => trans(substr($configuration['tableName'], 0, -1) . ' added successfully')];
+
+        $resourceStore = new VRResourceController();
+        $resourceStore->getResourceStore($data);
+
+
         return view('admin.pageform',  $configuration);
     }
     /**

@@ -41,8 +41,7 @@ class VRResourceController extends Controller
     {
         return $this->resourceStore();
     }
-
-
+    
     protected function showResource()
     {
     }

@@ -19,7 +19,7 @@
                 </div>
             @endif
 
-            {!! Form::open(['url' => route('app.' . $tableName . '.store')]) !!}
+            {!! Form::open(['url' => route('app.' . $tableName . '.store'), 'files' => true]) !!}
 
 
             @foreach($fields as $field)
@@ -58,8 +58,14 @@
                     </div>
                 @endif
 
+
             @endforeach
 
+            <div>
+                {!! Form::label('Product Image') !!}
+                {!! Form::file('image', null) !!}
+
+            </div>
 
             {!! Form::submit('Create' , ['class' => 'btn btn-success']) !!}
             <a class="btn btn-primary" href="{{ route('app.' . $tableName . '.index') }}">{{ucfirst($tableName)}} list</a>
