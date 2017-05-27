@@ -2,12 +2,9 @@
 
 @section('content')
 
-    <div class="container">
-
         {!! Form::open(
-            ['url' => route('app.' . $tableName . '.store'), 'files' => true]
+            ['url' => route('app.' . $tableName . '.store')]
          )!!}
-
 
         @foreach($fields as $field)
 
@@ -22,9 +19,6 @@
                 <div class="form-group">
                     {!! Form::label('$field', 'Enter ' . $field) !!}
                     {!! Form::text('id', '', ['class' => 'form-control']) !!}
-
-                    {!! Form::label('Product Image') !!}
-                    {!! Form::file('image', null) !!}
 
                 </div>
 
@@ -51,6 +45,5 @@
 
         {!! Form::close() !!}
 
-    </div>
 
 @endsection

@@ -12,17 +12,24 @@ class VRResourceController extends Controller
 
     public function uploadShow()
     {
-        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
         $resources['resource'] = VRResources::get()->toArray();
-        return view('admin.uploadBlade', $config, $resources);
+
+
+        $modelData = new VRResources();
+        $configuration['tableName'] = 'vr_resources';
+        $configuration['id'] = VRResources::get()->pluck('id', 'id');
+        $configuration['fields'] = $modelData->getFillables();
+
+        return view('admin.uploadBlade', $configuration, $resources);
 
     }
 
 
     protected function resourceStore(array $data = null)
     {
-
+        dd(request()->cover_image_id);
         $resource = request()->file('image');
+
 
         $uploadController = new VRUploadController();
         $record = $uploadController->upload($resource);
@@ -34,10 +41,13 @@ class VRResourceController extends Controller
 //        $config = new VRPagesResourcesConnections();
 //        $record = $config->getFillables();
 
-        VRPagesResourcesConnections::create([
-            "pages_id" => request()->id,
-            "resources_id"=> $record->id
-        ]);
+
+        if(request()->id != 0) {
+            VRPagesResourcesConnections::create([
+                "pages_id" => request()->id,
+                "resources_id" => $record->id
+            ]);
+        }
     }
 
     public function getResourceStore()
@@ -45,8 +55,5 @@ class VRResourceController extends Controller
         return $this->resourceStore();
     }
 
-    protected function showResource()
-    {
-    }
 
 }

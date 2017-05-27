@@ -50,7 +50,7 @@ class VRPagesController extends Controller {
         $configuration['fields'] = $dataFromModel->getFillable();
         $configuration['tableName'] = $dataFromModel->getTableName();
         //$configuration['list'] = VRPages::get()->toArray;
-        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('id', 'count')->toArray();
+        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('id', 'id')->toArray();
         $configuration['dropdown']['cover_image_id'] = VRResources::all()->pluck('path', 'id')->toArray();
         array_push ($configuration['fields'],'title') ;
         array_push ($configuration['fields'],'slug') ;
@@ -79,28 +79,27 @@ class VRPagesController extends Controller {
     public function adminStore()
     {
         $data = request()->all();
+
         $dataFromModel = new VRPages();
         $configuration['fields'] = $dataFromModel->getFillable();
         $configuration['tableName'] = $dataFromModel->getTableName();
-        $configuration['dropdown']['cover_image_id'] = VRResources::all()->pluck('path', 'id')->toArray();
-        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('count', 'id')->toArray();
-        array_push ($configuration['fields'],'title') ;
-        array_push ($configuration['fields'],'slug') ;
-        $configuration['dropdown']['languages_id'] = VRLanguages::all()->pluck( 'name', 'id')->toArray();
-        array_push ($configuration['fields'],'languages_id');
-        array_push ($configuration['fields'],'description_short') ;
-        array_push ($configuration['fields'],'description_long') ;
+
+//      create pages data
         $record = VRPages::create($data);
+
+//      create pages translations data using pages_id form prev create pages data
         $data['pages_id']=$record['id'];
-        //       dd($data);
         VRPagesTranslations::create($data);
         $configuration['comment'] = ['message' => trans(substr($configuration['tableName'], 0, -1) . ' added successfully')];
+
+//        store img data
+
+
 
         $resourceStore = new VRResourceController();
         $resourceStore->getResourceStore($data);
 
-
-        return view('admin.pageform',  $configuration);
+        return redirect()->route('app.pages.create', $configuration);
     }
     /**
      * Display the specified resource.
