@@ -16,9 +16,9 @@ class VRPagesCategoriesController extends Controller
      */
     public function index()
     {
-        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
-        $resources['resource'] = VRResources::get()->toArray();
-        return view('pages', $config, $resources);
+//        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
+//        $resources['resource'] = VRResources::get()->toArray();
+//        return view('pages', $config, $resources);
     }
 
     public function adminIndex()

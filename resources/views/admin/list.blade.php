@@ -3,8 +3,6 @@
 
 @section('content')
 
-    <div class="container">
-
         <div class="col-md-12">
             <table class="table">
                 <thead>
@@ -39,9 +37,4 @@
             </table>
             <a class="btn btn-sm btn-success" href="{{route('app.' . $tableName . '.create')}}">Add new</a>
         </div>
-
-    </div>
-
-
-
 @endsection

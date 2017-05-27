@@ -1,0 +1,10 @@
+#sidebar {
+    height: 100%;
+    position:relative;
+    /*background-color:green;*/
+}
+
+header{
+    text-align:center;
+    margin: 20px 0 50px 0;
+}

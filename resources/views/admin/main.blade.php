@@ -3,18 +3,32 @@
 <head>
 
     @include('admin.includes.meta')
-    <title>@yield('title')</title>
-    @include('admin.includes.css')
+    @include('admin.includes.head')
+
 </head>
 <body>
+    <div class="container">
 
-@yield('content')
+        <header class="header">
+            @yield('header')
+        </header>
 
-@include('admin.includes.footer')
+        <div id="main" class="row">
 
+            <!-- sidebar content -->
+            <div id="sidebar" class="col-md-2">
+                @include('admin.includes.sidebar')
+            </div>
 
-@include('admin.includes.js')
-@yield('script')
+            <!-- main content -->
+            <div id="content" class="col-md-10">
+                @yield('content')
+            </div>
 
+        </div>
+            @include('admin.includes.footer')
+            @include('admin.includes.js')
+            @yield('script')
+    </div>
 </body>
 </html>

@@ -2,6 +2,19 @@
 
 @section('content')
 
+    @foreach($resource as $img)
+
+        <a href="#"><img src="{{URL::asset($img['path'])}}" /></a>
+    @endforeach
+
+
+    @foreach($categories as $category)
+
+        {{--{{$category['id']}}--}}
+
+        {{$category['categories_translations']['name']}}
+    @endforeach
+
     <div class="container">
         <div class="col-md-12">
 

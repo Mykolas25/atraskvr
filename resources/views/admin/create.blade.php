@@ -11,7 +11,6 @@
 
         @foreach($fields as $field)
 
-
             @if($field == 'languages_id')
 
                 <div class="form-group">
@@ -43,7 +42,6 @@
                 </div>
 
             @endif
-
 
         @endforeach
 

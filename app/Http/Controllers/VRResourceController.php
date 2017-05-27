@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRPagesCategories;
 use App\Models\VRPagesResourcesConnections;
 use App\Models\VRResources;
 use Illuminate\Http\Request;
@@ -11,8 +12,10 @@ class VRResourceController extends Controller
 
     public function uploadShow()
     {
-//      $config["resources"] = DTResources::get()->toArray();
-        return view('admin.uploadBlade');
+        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
+        $resources['resource'] = VRResources::get()->toArray();
+        return view('admin.uploadBlade', $config, $resources);
+
     }
 
 

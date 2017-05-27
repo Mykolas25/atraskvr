@@ -50,7 +50,7 @@ class VRPagesController extends Controller {
         $configuration['fields'] = $dataFromModel->getFillable();
         $configuration['tableName'] = $dataFromModel->getTableName();
         //$configuration['list'] = VRPages::get()->toArray;
-        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('count', 'id')->toArray();
+        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('id', 'count')->toArray();
         $configuration['dropdown']['cover_image_id'] = VRResources::all()->pluck('path', 'id')->toArray();
         array_push ($configuration['fields'],'title') ;
         array_push ($configuration['fields'],'slug') ;
