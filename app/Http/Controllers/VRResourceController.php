@@ -7,6 +7,7 @@ use App\Models\VRPagesResourcesConnections;
 use App\Models\VRResources;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
+
 class VRResourceController extends Controller
 {
 
@@ -24,10 +25,9 @@ class VRResourceController extends Controller
 
     }
 
-
     protected function resourceStore(array $data = null)
     {
-        dd(request()->cover_image_id);
+
         $resource = request()->file('image');
 
 
@@ -54,6 +54,5 @@ class VRResourceController extends Controller
     {
         return $this->resourceStore();
     }
-
 
 }

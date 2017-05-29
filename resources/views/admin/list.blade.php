@@ -1,6 +1,5 @@
 @extends('admin.main')
 
-
 @section('content')
 
         <div class="col-md-12">

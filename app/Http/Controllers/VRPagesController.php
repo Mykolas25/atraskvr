@@ -24,6 +24,12 @@ class VRPagesController extends Controller {
      *
      * @return Response
      */
+
+    public function adminShow()
+    {
+        return view ('admin.pageform');
+    }
+
     public function adminIndex()
     {
         return view ('admin.index');

@@ -20,18 +20,18 @@
                 </div>
             @endif
 
+            {{dd($fields)}}
+
             {!! Form::open(['url' => route('app.' . $tableName . '.store'), 'files' => true]) !!}
 
             @foreach($fields as $field)
 
                     @if(isset($dropdown) and substr($field, -3) == '_id')
 
-                    {{--pages categories input--}}
-                    {{--cover image input--}}
-                    {{--pages Languages input--}}
+                    {{--pages categories input/cover image input/pages Languages input--}}
                         <div class="form-group">
                             {!! Form::label($field, 'Choose ' . ucfirst(substr($field, 0, -3) . ':')) !!}
-                            {{--{{dd($dropdown)}}--}}
+                    {{--{{dd($dropdown)}}--}}
                             {{Form::select($field ,$dropdown[$field], '', ['class' => 'form-control'])}}<br/>
                         </div>
 

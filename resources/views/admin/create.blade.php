@@ -22,7 +22,6 @@
 
                 </div>
 
-
             @elseif($field == 'categories_id')
                 <div class="form-group">
                     {!! Form::label($field, 'Choose ' . ucfirst(substr($field, 0, -4) . ':')) !!}
