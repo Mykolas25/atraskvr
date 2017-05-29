@@ -22,9 +22,9 @@
 
 
             @if(isset($mediaFilesShow))
-                @foreach($mediaFilesShow as $pagedata)
-                    @foreach($pagedata['pages_connected_images'] as $pagesConnectedImages)
-                        <div class="col-md-2"><img src="{{URL::asset($pagesConnectedImages['resources_connected_images']['path'])}}" alt="Forest" width="80" height="160"/></div>
+                @foreach($mediaFilesShow as $mediaFiles)
+                    @foreach($mediaFiles['pages_connected_images'] as $mediaFile)
+                        <div class="col-md-2"><img src="{{URL::asset($mediaFile['resources_connected_images']['path'])}}" alt="Forest" width="80" height="160"/></div>
                         @endforeach
                     @endforeach
             @endif
