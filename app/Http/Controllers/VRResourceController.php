@@ -27,16 +27,18 @@ class VRResourceController extends Controller
     protected function resourceStore(array $data = null)
     {
         $resource = request()->file('images');
-//        dd($resource);
+
         $imgIds = [];
         foreach($resource as $image) {
 
             $uploadController = new VRUploadController();
             $record = $uploadController->upload($image);
-//
             $imgIds[] = $record->id;
         }
-        return  $imgIds;
+        if(request()->title != null)
+             return  $imgIds;
+        else
+            return redirect()->route('app.upload.index');
     }
 
 //    public function createResource()

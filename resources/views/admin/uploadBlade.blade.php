@@ -11,7 +11,7 @@
 
         <div class="form-group">
             {!! Form::label('Add image here') !!}
-            {!! Form::file('image', null) !!}
+            {!! Form::file('images[]', array('multiple'=>true)) !!}
         </div>
 
         <div class="form-group">
