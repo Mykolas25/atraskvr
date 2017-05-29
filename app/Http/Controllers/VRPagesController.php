@@ -108,18 +108,22 @@ class VRPagesController extends Controller
         VRPagesTranslations::create($data);
         $configuration['comment'] = ['message' => trans(substr($configuration['tableName'], 0, -1) . ' added successfully')];
 
-//      store imgdata
+//      store imagdata when creating page
         $resourceStore = new VRResourceController();
         $resource_id = $resourceStore->getResourceStore($data);
 
 //      conntect pages_id and resources id
-        VRPagesResourcesConnections::create([
-            'pages_id' => $data['pages_id'],
-            'resources_id' => $resource_id
-        ]);
+
+        foreach($resource_id as $id) {
+            VRPagesResourcesConnections::create([
+                'pages_id' => $data['pages_id'],
+                'resources_id' => $id
+            ]);
+        }
 
         return redirect()->route('app.pages.create', $configuration);
     }
+
 
     /**
      * Display the specified resource.

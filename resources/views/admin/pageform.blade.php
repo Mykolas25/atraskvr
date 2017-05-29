@@ -29,7 +29,7 @@
 
                 <div class="header">
                    <div class="col-md-12">
-                       <div class="col-md-2"></div>
+                       <div class="col-md-2">count</div>
                        <div class="col-md-2">id</div>
                        <div class="col-md-2">Category</div>
                        <div class="col-md-2">Cover image id</div>

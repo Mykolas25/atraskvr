@@ -26,29 +26,27 @@ class VRResourceController extends Controller
 
     protected function resourceStore(array $data = null)
     {
+        $resource = request()->file('images');
+//        dd($resource);
+        $imgIds = [];
+        foreach($resource as $image) {
 
-        $resource = request()->file('image');
-        dd(request());
-        $uploadController = new VRUploadController();
-        $record = $uploadController->upload($resource);
-
-//        VRPagesResourcesConnections::create([
-////            "pages_id"=>auth()->user()->id,
-////            "resources_id"=> $record->id
-//        ]);
-//        $config = new VRPagesResourcesConnections();
-//        $record = $config->getFillables();
-
-
-//        if(request()->id != 0) {
-//            VRPagesResourcesConnections::create([
-//                "pages_id" => request()->id,
-//                "resources_id" => $record->id
-//            ]);
-//        }
-
-        return $record->id;
+            $uploadController = new VRUploadController();
+            $record = $uploadController->upload($image);
+//
+            $imgIds[] = $record->id;
+        }
+        return  $imgIds;
     }
+
+//    public function createResource()
+//    {
+//        $data = request()->all();
+//        dd($data);
+//        $this->resourceStore($data);
+//
+//        return redirect()->route('app.pages.upload');
+//    }
 
     public function getResourceStore()
     {
