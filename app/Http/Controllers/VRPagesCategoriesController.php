@@ -57,10 +57,6 @@ class VRPagesCategoriesController extends Controller
             'id' => $data['id']
         ]);
 
-        $resourceStore = new VRResourceController();
-        $resourceStore->getResourceStore($data);
-
-
         return redirect()->route('app.categories.index');
     }
 

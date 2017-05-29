@@ -19,40 +19,54 @@
                     <strong>{{ $comment['message'] }}</strong>
                 </div>
             @endif
+
+
+            @if(isset($mediaFilesShow))
+                @foreach($mediaFilesShow as $pagedata)
+                    @foreach($pagedata['pages_connected_images'] as $pagesConnectedImages)
+                        <div class="col-md-2"><img src="{{URL::asset($pagesConnectedImages['resources_connected_images']['path'])}}" alt="Forest" width="80" height="160"/></div>
+                        @endforeach
+                    @endforeach
+            @endif
+
+
             {{--{{dd($coverImageShow)}}--}}
             {{--Show the list of pages--}}
+                @if(isset($pagesShow))
+                    {{--{{dd($pagesShow)}}--}}
 
-           @if(isset($pagesShow))
-               <div class="createPageButton">
-                   <a class="btn btn-primary" href="{{route('app.pages.create')}}">Create New Page</a>
-               </div>
-
-                <div class="header">
-                   <div class="col-md-12">
-                       <div class="col-md-2">count</div>
-                       <div class="col-md-2">id</div>
-                       <div class="col-md-2">Category</div>
-                       <div class="col-md-2">Cover image id</div>
-                       <div class="col-md-2">Cover image path</div>
-                       <div class="col-md-2">Cover Image</div>
-                   </div>
-                </div>
-
-                @foreach($pagesShow as $pagedata)
-                <div class="grid">
-                    <div class="col-md-12">
-                        <div class="col-md-2">{{$pagedata['count']}}</div>
-                        <div class="col-md-2">{{$pagedata['id']}}</div>
-                        <div class="col-md-2">{{$pagedata['pages_categories_id']}}</div>
-                        <div class="col-md-2">{{$pagedata['cover_image_id']}}</div>
-                        <div class="col-md-2">{{$pagedata['resource_image']['path']}}</div>
-                        <div class="col-md-2"> <img src="{{URL::asset($pagedata['resource_image']['path'])}}" alt="Forest" width="200" height="400"/></div>
+                    <div class="createPageButton">
+                        <a class="btn btn-primary" href="{{route('app.pages.create')}}">Create New Page</a>
                     </div>
-                </div>
 
-                @endforeach
-           @endif
 
+                    <div class="header">
+                       <div class="col-md-12">
+                           {{--<div class="col-md-2">count</div>--}}
+                           <div class="col-md-2">id</div>
+                           <div class="col-md-2">Category</div>
+                           <div class="col-md-2">Cover image id</div>
+                           <div class="col-md-2">Cover image path</div>
+                           <div class="col-md-2">Cover Image</div>
+                       </div>
+                    </div>
+                    @foreach($pagesShow as $pagedata)
+                    <div class="grid">
+                        <div class="col-md-12">
+                            {{--<div class="col-md-2">{{$pagedata['count']}}</div>--}}
+                            <div class="col-md-2">{{$pagedata['id']}}</div>
+                            <div class="col-md-2">{{$pagedata['pages_categories_id']}}</div>
+                            <div class="col-md-2">{{$pagedata['cover_image_id']}}</div>
+                            <div class="col-md-2">{{$pagedata['resource_image']['path']}}</div>
+                            <div class="col-md-2"> <img src="{{URL::asset($pagedata['resource_image']['path'])}}" alt="Forest" width="80" height="160"/></div>
+                            <div class="col-md-2"> <a class="btn btn-primary" href="{{route('app.pages.mediaFiles', $pagedata['id'])}}">Related media files</a></div>
+                            {{--@foreach($pagedata['pages_connected_images'] as $pagesConnectedImages)--}}
+                                {{--<div style="float: left;"><img src="{{URL::asset($pagesConnectedImages['resources_connected_images']['path'])}}" alt="Forest" width="80" height="160"/></div>--}}
+                            {{--@endforeach--}}
+                        </div>
+                    </div>
+                    @endforeach
+                @endif
             {{--Create new page --}}
             @if(isset($tableName))
 
@@ -106,14 +120,15 @@
 
                     @endif
                 @endforeach
-            <div>
-                {!! Form::label('Product Image') !!}
+
+            <div class="standardDiv">
+                {!! Form::label('Upoad Image (Select one or more images using Crl+ML)') !!}
                 {!! Form::file('images[]', array('multiple'=>true)) !!}
             </div>
 
-            {!! Form::submit('Create' , ['class' => 'btn btn-success']) !!}
-            <a class="btn btn-primary" href="{{ route('app.' . $tableName . '.index') }}">{{ucfirst($tableName)}} list</a>
-
+            <div  class="standardDiv">{!! Form::submit('Create' , ['class' => 'btn btn-success']) !!}
+                <a class="btn btn-primary" href="{{ route('app.' . $tableName . '.index') }}">{{ucfirst($tableName)}} list</a>
+            </div>
             {!! Form::close() !!}
             @endif
 @endsection

@@ -32,13 +32,19 @@ class VRPagesController extends Controller
 
     public function adminShow()
     {
-        $config['pagesShow'] = VRpages::with('resourceImage')->get()->toArray();
+        $config['pagesShow'] = VRpages::with('resourceImage','pagesConnectedImages')->get()->toArray();
+        return view('admin.pageform', $config);
+    }
+
+    public function mediaFiles($id)
+    {
+        $config['mediaFilesShow'] = VRpages::with('resourceImage','pagesConnectedImages')->where('id', '=', $id)->get()->toArray();
         return view('admin.pageform', $config);
     }
 
     public function adminIndex()
     {
-        return view('admin.index');
+//        return view('admin.index');
     }
 
     /**

@@ -5,7 +5,7 @@
         {!! Form::open(
             ['url' => route('app.' . $tableName . '.store')]
          )!!}
-
+{{$tableName}}
         @foreach($fields as $field)
 
             @if($field == 'languages_id')

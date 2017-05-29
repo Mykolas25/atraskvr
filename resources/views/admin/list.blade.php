@@ -30,8 +30,6 @@
 
                     </tr>
                 @endforeach
-
-
                 </tbody>
             </table>
             <a class="btn btn-sm btn-success" href="{{route('app.' . $tableName . '.create')}}">Add new</a>

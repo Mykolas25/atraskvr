@@ -14,6 +14,8 @@ class VRPagesResourcesConnections extends CoreModel
         unset($this->fillable[0]);
         return $this->fillable;
     }
-
-
+    public function resourcesConnectedImages()
+    {
+        return $this->hasOne(VRResources::class, 'id', 'resources_id');
+    }
 }

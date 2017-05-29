@@ -30,7 +30,6 @@ class VRResourceController extends Controller
 
         $imgIds = [];
         foreach($resource as $image) {
-
             $uploadController = new VRUploadController();
             $record = $uploadController->upload($image);
             $imgIds[] = $record->id;

@@ -182,15 +182,21 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
     Route::group(['prefix' => 'pages'], function () {
-        Route::get('/', ['as' => 'app.pages.index','uses' => 'VRPagesController@adminIndex']);
+
+        Route::get('/', ['as' => 'app.pages.show','uses' => 'VRPagesController@adminShow']);
         Route::get('/create', ['as' => 'app.pages.create','uses' => 'VRPagesController@adminCreate']);
         Route::post('/create', ['as' => 'app.pages.store', 'uses' => 'VRPagesController@adminStore']);
-//        Route::group(['prefix' => '{id}'], function () {
-            Route::get('/edit', ['as' => 'app.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
-            Route::post('/edit', ['as' => 'app.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
-            Route::get('/', ['as' => 'app.pages.show', 'uses' => 'VRPagesController@adminShow']);
-            Route::delete('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
-//        });
+
+
+
+        Route::group(['prefix' => '{id}'], function () {
+              Route::get('/mediaFiles', ['as' => 'app.pages.mediaFiles', 'uses' => 'VRPagesController@mediaFiles']);
+              Route::post('/mediaFiles', ['as' => 'app.pages.mediaFiles', 'uses' => 'VRPagesController@mediaFiles']);
+//            Route::get('/edit', ['as' => 'app.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
+//            Route::post('/edit', ['as' => 'app.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
+//            Route::get('/', ['as' => 'app.pages.show', 'uses' => 'VRPagesController@adminShow']);
+//            Route::delete('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
+        });
     });
 
     Route::group(['prefix' => 'permissions'], function () {
@@ -272,7 +278,6 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/', ['as' => 'app.upload.index','uses' => 'VRResourceController@uploadShow']);
         Route::post('/', ['as' => 'app.resource.resourceStore', 'uses' => 'VRResourceController@resourceStore']);
-
     });
 
 
