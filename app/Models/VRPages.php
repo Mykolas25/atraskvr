@@ -25,4 +25,10 @@ class VRPages extends CoreModel
     {
         return $this->hasOne(VRPagesCategories::class, 'id', 'pages_categories_id');
     }
+
+    public function resourceImage()
+    {
+        return $this->hasOne(VRResources::class, 'id', 'cover_image_id');
+    }
+
 }

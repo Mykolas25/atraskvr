@@ -24,16 +24,15 @@
     {{--image gallery display--}}
 
     <div class="col-md-12">
-
-    @foreach($resource as $img)
-        <div class="col-md-3">
-            <div class="gallery">
-                    <a href="#"><img src="{{URL::asset($img['path'])}}" alt="Forest" width="600" height="400"/></a>
-                {{--<div class="desc">Add a description of the image here</div>--}}
+        @foreach($resource as $img)
+            <div class="col-md-3">
+                <div class="gallery">
+                        <a href="#"><img src="{{URL::asset($img['path'])}}" alt="Forest" width="600" height="400"/></a>
+                    {{--<div class="desc">Add a description of the image here</div>--}}
+                </div>
+                {!! Form::checkbox('name', 'value') !!}
             </div>
-            {!! Form::checkbox('name', 'value') !!}<br/>
-        </div>
-    @endforeach
+        @endforeach
     </div>
 
 @endsection

@@ -3,8 +3,7 @@
         <li><a href="{{route('app.categories.index')}}">Categories</a></li>
         <li><a href="{{route('app.upload.index')}}">Resources</a></li>
         <li><a href="#">Languages</a></li>
-        <li><a href="{{route('app.pages.create')}}">Create Pages</a></li>
-        <li><a href="{{route('app.pages.show')}}">Show Pages</a></li>
+        <li><a href="{{route('app.pages.show')}}">Pages list</a></li>
     </ul>
 </nav>
 

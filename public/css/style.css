@@ -9,6 +9,18 @@ header{
     margin: 20px 0 50px 0;
 }
 
+div.header{
+    font-weight: bold;
+    margin:0px auto;
+    /*border-bottom :2px black solid;*/
+    clear:both;
+
+}
+
+.grid{
+    clear:both;
+}
+
 
 div.gallery {
     margin: 5px;
@@ -29,4 +41,22 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+.createPageButton{
+    margin: 5px;
+    text-align:right;
+}
+
+.col-md-12 {
+    table-layout: fixed;
+    word-wrap: break-word;
+    padding-bottom: 5px;
+    clear:both;
+}
+
+.col-md-2{
+    table-layout: fixed;
+    word-wrap: break-word;
+    padding-bottom: 5px;
 }

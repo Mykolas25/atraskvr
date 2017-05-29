@@ -15,7 +15,6 @@ class VRResourceController extends Controller
     {
         $resources['resource'] = VRResources::get()->toArray();
 
-
         $modelData = new VRResources();
         $configuration['tableName'] = 'vr_resources';
         $configuration['id'] = VRResources::get()->pluck('id', 'id');
@@ -29,8 +28,7 @@ class VRResourceController extends Controller
     {
 
         $resource = request()->file('image');
-
-
+        dd(request());
         $uploadController = new VRUploadController();
         $record = $uploadController->upload($resource);
 
@@ -42,12 +40,14 @@ class VRResourceController extends Controller
 //        $record = $config->getFillables();
 
 
-        if(request()->id != 0) {
-            VRPagesResourcesConnections::create([
-                "pages_id" => request()->id,
-                "resources_id" => $record->id
-            ]);
-        }
+//        if(request()->id != 0) {
+//            VRPagesResourcesConnections::create([
+//                "pages_id" => request()->id,
+//                "resources_id" => $record->id
+//            ]);
+//        }
+
+        return $record->id;
     }
 
     public function getResourceStore()
