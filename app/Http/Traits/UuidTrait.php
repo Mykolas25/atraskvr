@@ -8,7 +8,6 @@
 
 namespace App\Http\Traits;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 

@@ -38,7 +38,7 @@ div.gallery:hover {
 
 div.gallery img {
     width: 100%;
-    height: auto;
+    height: 200px;
 }
 
 div.desc {
@@ -63,3 +63,8 @@ div.desc {
     word-wrap: break-word;
     padding-bottom: 5px;
 }
+
+.btn {
+    width: 150px;
+}
+

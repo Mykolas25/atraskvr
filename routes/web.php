@@ -11,17 +11,25 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
-Route::get('/', ['as' => 'app.pages.index','uses' => 'VRPagesCategoriesController@index']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
+//Route::get('/', ['as' => 'app.pages.index','uses' => 'VRPagesCategoriesController@index']);
 
 Route::group(['prefix' => 'admin'], function () {
+
+
+    Route::get('/', ['as' => 'app.admin.index','uses' => 'VRPagesController@adminIndex']);
+
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', ['as' => 'app.categories.index','uses' => 'VRPagesCategoriesController@adminIndex']);
@@ -48,29 +56,6 @@ Route::group(['prefix' => 'admin'], function () {
                 Route::delete('/', ['as' => 'app.categories_translations.delete', 'uses' => 'VRCategoriesTranslationsController@adminDestroy']);
             });
         });
-
-
-
-
-
-
-//
-//    Route::group(['prefix' => 'categories_translations'], function () {
-//
-//        Route::get('/', ['as' => 'app.categories_translations.index','uses' => 'VRCategoriesTranslationsController@adminIndex']);
-//
-//        Route::get('/create', ['as' => 'app.categories_translations.create','uses' => 'VRCategoriesTranslationsController@adminCreate']);
-//        Route::post('/create', ['as' => 'app.categories_translations.store', 'uses' => 'VRCategoriesTranslationsController@adminStore']);
-//
-//        Route::group(['prefix' => '{id}'], function () {
-//
-//            Route::get('/edit', ['as' => 'app.categories_translations.edit', 'uses' => 'VRCategoriesTranslationsController@adminEdit']);
-//            Route::post('/edit', ['as' => 'app.categories_translations.update', 'uses' => 'VRCategoriesTranslationsController@adminUpdate']);
-//
-//            Route::get('/', ['as' => 'app.categories_translations.show', 'uses' => 'VRCategoriesTranslationsController@adminShow']);
-//            Route::delete('/', ['as' => 'app.categories_translations.delete', 'uses' => 'VRCategoriesTranslationsController@adminDestroy']);
-//
-//        });
     });
 
     Route::group(['prefix' => 'languages'], function () {
@@ -145,24 +130,6 @@ Route::group(['prefix' => 'admin'], function () {
         });
     });
 
-//    Route::group(['prefix' => 'pages'], function () {
-//
-//        Route::get('/', ['as' => 'app.pages.index','uses' => 'VRPagesController@adminIndex']);
-//
-//        Route::get('/create', ['as' => 'app.pages.create','uses' => 'VRPagesController@adminCreate']);
-//        Route::post('/create', ['as' => 'app.pages.store', 'uses' => 'VRPagesController@adminStore']);
-//
-//        Route::group(['prefix' => '{id}'], function () {
-//
-//            Route::get('/edit', ['as' => 'app.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
-//            Route::post('/edit', ['as' => 'app.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
-//
-//            Route::get('/', ['as' => 'app.pages.show', 'uses' => 'VRPagesController@adminShow']);
-//            Route::delete('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
-//
-//        });
-//    });
-
     Route::group(['prefix' => 'pages_categories'], function () {
 
         Route::get('/', ['as' => 'app.pages_categories.index','uses' => 'VRPagesCategoriesController@adminIndex']);
@@ -187,15 +154,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/create', ['as' => 'app.pages.create','uses' => 'VRPagesController@adminCreate']);
         Route::post('/create', ['as' => 'app.pages.store', 'uses' => 'VRPagesController@adminStore']);
 
-
-
         Route::group(['prefix' => '{id}'], function () {
               Route::get('/mediaFiles', ['as' => 'app.pages.mediaFiles', 'uses' => 'VRPagesController@mediaFiles']);
               Route::post('/mediaFiles', ['as' => 'app.pages.mediaFiles', 'uses' => 'VRPagesController@mediaFiles']);
-//            Route::get('/edit', ['as' => 'app.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
-//            Route::post('/edit', ['as' => 'app.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
-//            Route::get('/', ['as' => 'app.pages.show', 'uses' => 'VRPagesController@adminShow']);
-//            Route::delete('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
+            Route::get('/edit', ['as' => 'app.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
+            Route::post('/edit', ['as' => 'app.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
+            Route::get('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
+            Route::delete('/', ['as' => 'app.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
         });
     });
 
@@ -283,3 +248,4 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 });
+

@@ -1,11 +1,17 @@
 @extends('admin.main')
 
+@section('header')
+    @if(isset($fields))
+        <h1> Create {{substr($tableName, 0, -1)}} </h1>
+    @endif
+@endsection
+
 @section('content')
 
         {!! Form::open(
             ['url' => route('app.' . $tableName . '.store')]
          )!!}
-{{$tableName}}
+
         @foreach($fields as $field)
 
             @if($field == 'languages_id')

@@ -40,15 +40,6 @@ class VRResourceController extends Controller
             return redirect()->route('app.upload.index');
     }
 
-//    public function createResource()
-//    {
-//        $data = request()->all();
-//        dd($data);
-//        $this->resourceStore($data);
-//
-//        return redirect()->route('app.pages.upload');
-//    }
-
     public function getResourceStore()
     {
         return $this->resourceStore();

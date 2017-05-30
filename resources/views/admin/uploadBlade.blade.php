@@ -1,29 +1,29 @@
 @extends('admin.main')
 
+@section('header')
+@if(isset($resource))
+    <h1> Resources Gallery </h1>
+@endif
+@endsection
+
 @section('content')
 
-    {{--createing new image --}}
-    <div class="col-md-12">
-
+{{--createing new image --}}
         {!! Form::open(
             ['route' => 'app.resource.resourceStore','files' => true]
         ) !!}
 
         <div class="form-group">
-            {!! Form::label('Add image here') !!}
+            {!! Form::label('Add image here (Select one or more files)') !!}
             {!! Form::file('images[]', array('multiple'=>true)) !!}
         </div>
 
         <div class="form-group">
             {!! Form::submit('Submit file!') !!}
         </div>
-        {!! Form::close() !!}
 
-    </div>
+{{--image gallery display--}}
 
-    {{--image gallery display--}}
-
-    <div class="col-md-12">
         @foreach($resource as $img)
             <div class="col-md-3">
                 <div class="gallery">
@@ -33,8 +33,6 @@
                 {!! Form::checkbox('name', 'value') !!}
             </div>
         @endforeach
-    </div>
-
 @endsection
 
 {{--@foreach($fields as $field)--}}

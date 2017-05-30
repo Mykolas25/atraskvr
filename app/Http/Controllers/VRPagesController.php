@@ -44,7 +44,7 @@ class VRPagesController extends Controller
 
     public function adminIndex()
     {
-//        return view('admin.index');
+        return view('admin.pageform');
     }
 
     /**
@@ -150,24 +150,36 @@ class VRPagesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function adminEdit($id)
     {
-        //
+        $dataFromModel = new VRPages();
+        $configuration['fields'] = $dataFromModel->getFillable();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['dropdown']['pages_categories_id'] = VRPagesCategories::all()->pluck('id', 'id')->toArray();
+        $configuration['record'] = VRPages::find($id)->toArray();
+
+        return view('admin.editform', $configuration);
     }
 
-    /**
-     * Update the specified resource in storage.
-     * PUT /vrpages/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function update($id)
+    public function adminUpdate($id)
     {
-        //
-        //TODO find from VRPagesTranslations find record by $record->id && $data->languages_id
-        //TODO if exists -> update
-        //TODO if not exists -> create translation
+        $data = request()->all();
+        $dataFromModel = new VRPages();
+        $configuration['fields'] = $dataFromModel->getFillable();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $missingValues = '';
+        foreach ($configuration['fields'] as $key => $value) {
+            if ($value == 'parent_id') {
+            } elseif (!isset($data[$value])) {
+                $missingValues = $missingValues . ' ' . $value . ',';
+            }
+        }
+        if ($missingValues != '') {
+            $missingValues = substr($missingValues, 1, -1);
+            $configuration['error'] = ['message' => trans('Please enter ' . $missingValues)];
+            $configuration['record'] = VRPages::find($id)->toArray();
+            return view('admin.editform', $configuration);
+        }
     }
 
     /**
@@ -177,8 +189,12 @@ class VRPagesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+
+
+    public function adminDestroy($id)
     {
-        //
+        if (VRPages::destroy($id) and VRPagesTranslations::where('pages_id', '=', $id)->delete()) {
+            return json_encode(["success" => true, "id" => $id]);
+        }
     }
 }
