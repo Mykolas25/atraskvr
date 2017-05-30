@@ -23,9 +23,12 @@ class VRPagesCategoriesController extends Controller
 
     public function adminIndex()
     {
+        $dataFromModel = new VRPagesCategories();
+        $configuration['fields'] = $dataFromModel->getFillable();
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         $configuration['tableName'] = 'categories';
-        $configuration['list'] = VRPagesCategories::get()->toArray();
+        $configuration['categories_data'] = VRPagesCategories::get()->where('deleted_at', '=', null)->toArray();
         return view('admin.list', $configuration);
 
 //        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();

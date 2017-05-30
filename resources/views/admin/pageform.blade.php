@@ -41,8 +41,7 @@
 
             @endif
 
-{{--Show the related media files--}}
-
+{{--Show related/connected media files--}}
             @if(isset($mediaFilesShow))
                 @foreach($mediaFilesShow as $mediaFiles)
                     @foreach($mediaFiles['pages_connected_images'] as $mediaFile)
@@ -79,7 +78,7 @@
                         <div class="col-md-2">{{$pagedata['cover_image_id']}}</div>
                         <div class="col-md-2">{{$pagedata['resource_image']['path']}}</div>
                         <div class="col-md-2"> <img src="{{URL::asset($pagedata['resource_image']['path'])}}" alt="Forest" width="80" height="160"/></div>
-                        <div class="col-md-2"> <a class="btn btn-primary" href="{{route('app.pages.mediaFiles', $pagedata['id'])}}">Related media files</a></div>
+                        <div class="col-md-2"> <a class="btn btn-primary" href="{{route('app.pages.mediaFiles', $pagedata['id'])}}">Media files</a></div>
                         <div class="col-md-2"> <a class="btn btn-success" href="{{route('app.pages.edit', $pagedata['id'])}}">Edit</a></div>
                         <div class="col-md-2"> <a class="btn btn-warning" href="{{route('app.pages.delete', $pagedata['id'])}}">Delete</a></div>
                     </div>

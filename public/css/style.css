@@ -58,14 +58,15 @@ div.desc {
     clear:both;
 }
 
-.col-md-2{
+.col-md-2, .col-md-6{
     table-layout: fixed;
     word-wrap: break-word;
     padding-bottom: 5px;
 }
 
 .btn {
-    width: 150px;
+    width: 100px;
+    margin: 10px;
 }
 
 .adminIndexWallpaper img{

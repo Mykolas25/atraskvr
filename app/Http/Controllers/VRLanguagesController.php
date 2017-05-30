@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRLanguages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class VRLanguagesController extends Controller
 {
+
     public function adminIndex()
     {
         $dataFromModel = new VRLanguages();
         $configuration['fields'] = $dataFromModel->getFillable();
         $configuration['tableName'] = $dataFromModel->getTableName();
 
-        $configuration['list_data'] = VRLanguages::get()->where('deleted_at', '=', null)->toArray();
+        $configuration['languages_data'] = VRLanguages::get()->where('deleted_at', '=', null)->toArray();
 
-        if ($configuration['list_data'] == []) {
+//check if there is data in VRLanguages
+        if ($configuration['languages_data'] == []) {
             $configuration['error'] = ['message' => trans("List is empty. Please create some " . $configuration['tableName'] . ", then check list again")];
             return view('admin.list', $configuration);
         }
