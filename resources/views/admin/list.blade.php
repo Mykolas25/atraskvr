@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('header')
-    @if(isset($list_data))
+    @if(isset($tableName))
         <h1> List of {{substr($tableName, 0)}}</h1>
     @endif
 @endsection

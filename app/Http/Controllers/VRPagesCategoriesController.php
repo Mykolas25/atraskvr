@@ -14,7 +14,7 @@ class VRPagesCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function adminShow()
     {
 //        $config['categories'] = VRPagesCategories::with(['CategoriesTranslations','Pages'])->get()->toArray();
 //        $resources['resource'] = VRResources::get()->toArray();

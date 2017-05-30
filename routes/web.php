@@ -36,9 +36,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/create', ['as' => 'app.categories.create','uses' => 'VRPagesCategoriesController@adminCreate']);
         Route::post('/create', ['as' => 'app.categories.store', 'uses' => 'VRPagesCategoriesController@adminStore']);
         Route::group(['prefix' => '{id}'], function () {
-            Route::get('/edit', ['as' => 'app.categories.edit', 'uses' => 'VRPageCategoriesController@adminEdit']);
-            Route::post('/edit', ['as' => 'app.categories.update', 'uses' => 'VRPageCategoriesController@adminUpdate']);
-            Route::get('/', ['as' => 'app.categories.show', 'uses' => 'VRPageCategoriesController@adminShow']);
+            Route::get('/edit', ['as' => 'app.categories.edit', 'uses' => 'VRPagesCategoriesController@adminEdit']);
+            Route::post('/edit', ['as' => 'app.categories.update', 'uses' => 'VRPagesCategoriesController@adminUpdate']);
+            Route::get('/', ['as' => 'app.categories.show', 'uses' => 'VRPagesCategoriesController@adminShow']);
             Route::delete('/', ['as' => 'app.categories.delete', 'uses' => 'VRCategoriesController@adminDestroy']);
         });
 
