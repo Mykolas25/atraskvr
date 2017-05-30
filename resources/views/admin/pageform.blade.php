@@ -7,6 +7,11 @@
         <h1> List of pages</h1>
     @elseif(isset($fields))
         <h1> Create page </h1>
+    @elseif(!isset($mediaFilesShow) && !isset($pagesShow)&& !isset($fields))
+        <div class="introDiv">
+            <h1>Welcome to the administrator page</h1>
+        </div>
+
     @endif
 @endsection
 
@@ -30,8 +35,8 @@
 
             @if(!isset($mediaFilesShow) && !isset($pagesShow)&& !isset($fields))
 
-                <div class="introDiv">
-                    <h1>Welcome to the administrator page</h1>
+                <div class="adminIndexWallpaper">
+                    <img src="http://wallpaperpulse.com/img/751396.jpg">
                 </div>
 
             @endif
