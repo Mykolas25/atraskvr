@@ -42,18 +42,19 @@
     @endif
 
     {{--Show related/connected media files--}}
-
     @if(isset($mediaFilesShow))
 
         <div class="row">
 
             <div class="col-md-12">
-
                 <div class="col-md-6">
                     @if(isset($image))
                         @foreach($image as $imgPath)
-                            <div class="col-md-3"><img src="{{URL::asset($imgPath)}}" alt="Forest" width="80"
-                                                       height="150"/></div>
+                            <div class="col-md-4">
+                                <div class="gallery">
+                                    <img src="{{URL::asset($imgPath)}}" alt="Forest" width="80" height="150"/>
+                                </div>
+                            </div>
                         @endforeach
                     @endif
                 </div>
@@ -61,9 +62,8 @@
                 <div class="col-md-6">
                     @if(isset($video))
                         @foreach($video as $vidPath)
-                            <div style="clear:both">
-                                <div class="embed-responsive embed-responsive-4by3" alt="Forest" width="100"
-                                     height="100">
+                            <div class="gallery">
+                                <div class="embed-responsive embed-responsive-4by3" alt="Forest" width="100" height="100">
                                     <iframe class="embed-responsive-item" src="{{URL::asset($vidPath)}}"></iframe>
                                 </div>
                             </div>
