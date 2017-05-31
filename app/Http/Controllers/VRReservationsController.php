@@ -18,7 +18,9 @@ class VRReservationsController extends Controller
         for($date = $start_date; $date->lte($end_date); $date->$addWhat($value)) {
             $dates[] = $date->format($dateFormat);
         }
+
         return $dates;
+
     }
 
     public function adminIndex()

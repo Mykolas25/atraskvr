@@ -39,6 +39,26 @@ class VRPagesController extends Controller
     public function mediaFiles($id)
     {
         $config['mediaFilesShow'] = VRpages::with('resourceImage','pagesConnectedImages')->where('id', '=', $id)->get()->toArray();
+        if(isset($config['mediaFilesShow']))
+        {
+            foreach($config['mediaFilesShow'] as $mediaFiles)
+            {
+               foreach($mediaFiles['pages_connected_images'] as $mediaFile)
+               {
+                   if($mediaFile['resources_connected_images']['mime_type'] == "image/jpeg" || "image/png")
+                   {
+                        $config['image'][] = $mediaFile['resources_connected_images']['path'];
+                   }
+                   if($mediaFile['resources_connected_images']['mime_type'] == "video/mp4")
+                     {
+                         $config['video'][] = $mediaFile['resources_connected_images']['path'];
+
+                     }
+
+                }
+            }
+        }
+
         return view('admin.pageform', $config);
     }
 
