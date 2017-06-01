@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    @include('admin.menu')
     @include('admin.includes.meta')
     @include('admin.includes.head')
 
 </head>
+<header>@include('admin.includes.header')</header>
 <body>
     <div class="container">
 

@@ -1,11 +1,24 @@
-{{--<div class="navbar">--}}
-    {{--<div class="navbar-inner">--}}
-        {{--<a id="logo" href="/">Single Malt</a>--}}
-        {{--<ul class="list-inline">--}}
-            {{--<li><a href="/">Home</a></li>--}}
-            {{--<li><a href="/about">About</a></li>--}}
-            {{--<li><a href="/projects">Projects</a></li>--}}
-            {{--<li><a href="/contact">Contact</a></li>--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="navbar" style="background-color:black">
+    <div class="navbar-inner">
+        <ul class="list-inline">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </button>
+                <div class="dropdown-menu">
+                    @foreach($menu as $menuInfo)
+                        <li><a href="/" data-jq-dropdown="#jq-dropdown-1">{{$menuInfo['name']}}</a></li>
+                    @endforeach
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
