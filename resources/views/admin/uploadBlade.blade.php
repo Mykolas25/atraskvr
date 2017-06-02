@@ -24,30 +24,34 @@
         </div>
 
 {{--image gallery display--}}
-<div class="col-md-6">
-        @foreach($resource as $img)
-            <div class="col-md-3">
-                <div class="gallery">
-                    @if($img['mime_type'] == "image/jpeg")
-                        <a href="#"><img src="{{URL::asset($img['path'])}}" alt="Forest" width="600" height="400"/></a>
-                     @endif
-                </div>
-                {!! Form::checkbox('name', 'value') !!}
-            </div>
-        @endforeach
-</div>
+@if($resource != null)
+    <div class="col-md-6">
+                @foreach($resource as $img)
+                    <div class="col-md-3">
+                        <div class="gallery">
+                            @if($img['mime_type'] == "image/jpeg")
+                                <a href="#"><img src="{{URL::asset($img['path'])}}" alt="Forest" width="600" height="400"/></a>
+                             @endif
+                        </div>
+                        {!! Form::checkbox('name', 'value') !!}
+                    </div>
+                @endforeach
+    </div>
 
-<div class="col-md-6">
-    <div class="gallery">
-        <div class="col-md-3">
-        @if($img['mime_type'] == "video/mp4")
-            <div class="embed-responsive embed-responsive-4by3" style="width:600px; height:400px">
-                <iframe class="embed-responsive-item" src="{{URL::asset($img['path'])}}" ></iframe>
+    <div class="col-md-6">
+        <div class="gallery">
+            <div class="col-md-3">
+            @if($img['mime_type'] == "video/mp4")
+                <div class="embed-responsive embed-responsive-4by3" style="width:600px; height:400px">
+                    <iframe class="embed-responsive-item" src="{{URL::asset($img['path'])}}" ></iframe>
+                </div>
+            @endif
             </div>
-        @endif
-        <div>
-    <div>
-<div>
+        </div>
+    </div>
+    @else
+    No media found in database
+@endif
 @endsection
 
 {{--@foreach($fields as $field)--}}
