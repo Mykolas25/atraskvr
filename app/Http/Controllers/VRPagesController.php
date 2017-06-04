@@ -127,6 +127,7 @@ class VRPagesController extends Controller
         return redirect()->route('app.pages.index');
     }
 
+
     public function adminShow($id)
     {
         $dataFromModel = new VRPages();
@@ -153,8 +154,8 @@ class VRPagesController extends Controller
 
         $configuration['connectedMediaDataArrays'] = $this-> mediaFiles($id);
         $configuration['connectedMediaDataArrays']['connectedMediaData'];
-
-
+        $configuration['i'] = 0;
+       $configuration['breakLoop'] = $configuration['i']+1;
 
         return view('admin.single', $configuration);
     }
