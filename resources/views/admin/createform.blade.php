@@ -48,6 +48,7 @@
                         {!! Form::label($field, 'Choose ' . ucfirst(substr($field, 0, -3) . ':')) !!}
                         {{Form::select($field,$dropdown['cover_image'],'', ['class' => 'form-control'])}}<br/>
                     </div>
+
 {{--display media upload button for multiple files IN PAGES CREATE. Used in 'create new page' and also 'create --}}
                     <div class="form-group">
                         {!! Form::file('images[]', array('multiple'=>true)) !!}<br/>

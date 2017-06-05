@@ -62,14 +62,16 @@
         @if(isset($connectedMediaDataArrays))
             <a href=></a><h3>Connected media data</h3><br>
             @foreach ($connectedMediaDataArrays['connectedMediaData'] as $mediaDataArray)
-                <table class="table">
+                <table class="table"  style="table-layout: fixed; word-wrap: break-word">
                     <thead class="thead-default">
                     <tr>
-                        <th>madia type</th>
-                        <th>media file</th>
-                        @foreach($mediaDataArray as $key => $value)
-                            <th>{{$key}}</th>
-                        @endforeach
+                        @if($loop->iteration == 1)
+                            <th>madia type</th>
+                            <th>media file</th>
+                            @foreach($mediaDataArray as $key => $value)
+                                <th>{{$key}}</th>
+                            @endforeach
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
