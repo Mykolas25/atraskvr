@@ -1,11 +1,11 @@
 <?php
 
 return [
-
-   'inspired_by' => 'Inspired by: ',
-   'main_title' => 'Discover VR',
+    'inspired_by' => 'Inspired by: ',
+    'main_title' => 'Discover VR',
     'header_description' => 'No translation',
-    'language' => 'Language'
-
-
+    'language' => 'Language',
+    'about' => 'About',
+    'rooms' => 'Rooms'
 ];
+

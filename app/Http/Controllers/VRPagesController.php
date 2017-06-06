@@ -243,9 +243,11 @@ class VRPagesController extends Controller
             $resourceId = VRPages::find($id)->cover_image_id;
             $record = $newVRResourcesController->upload($resource, $resourceId);
             $data['cover_image_id'] = $record->id;
+
         }
 
         $record = VRPages::find($id);
+
 
         $record->update($data);
 

@@ -24,13 +24,7 @@ class CheckLanguage
             return $next($request);
         } else {
 
-            dd($locales);
-
         }
-
-
-
-
 
     }
 }

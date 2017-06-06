@@ -10,7 +10,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-
                 @foreach($menu as $menuItem)
 
                     @if($menuItem['title'] == 'Virtualūs kambariai' || $menuItem['title'] == 'Virtual rooms')
@@ -31,9 +30,11 @@
 
                             </ul>
                         </li>
-
                     @else
-                        <li><a href="#">{{$menuItem['title']}}</a></li>
+                        @if($menuItem['title'])
+                            {{--page-1--}}
+                               <li><a href="#{{$menuItem['title']}}">{{$menuItem['title']}}</a></li>
+                        @endif
                     @endif
 
                 @endforeach
