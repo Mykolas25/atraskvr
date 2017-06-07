@@ -16,7 +16,7 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menuItem['title']}}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
 
                                 @foreach($pages as $page)
 
@@ -45,8 +45,6 @@
                             <li><a href="/en">En</a></li>
                         </ul>
                     </li>
-
-
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

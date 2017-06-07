@@ -165,6 +165,7 @@ return [
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,
 
         /*
          * Package Service Providers...
