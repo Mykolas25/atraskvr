@@ -1,7 +1,15 @@
 @media (max-width: 1024px) {
-    #part-1 {
+    #part-1
+    {
         height: 1048px;
     }
+
+@media (max-width: 320px){
+    #VRRooms{
+        height: 640px;
+    }
+}
+
 
     #mainTitleDescription {
         margin-top: 60%;
@@ -14,6 +22,5 @@
         transform: scale(1.7, 1.7);
 
     }
-
 
 }

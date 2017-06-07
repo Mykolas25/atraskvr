@@ -89,19 +89,75 @@ body {
     z-index: 500;
 
 }
+.experience
+{
+   width:100%;
+}
 
-#page-1 {
-    height: 1073px;
-    background: url(../images/header.jpg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    -webkit-transition: height 1s;
-    position: relative;
+.experienceImage
+{
 
 
 }
+
+/*#wrapper*/
+/*{*/
+    /*width: 3000px;*/
+    /*margin: 0 auto;*/
+
+/*}*/
+
+#page-1, #VRRooms
+{
+    height: 1073px;
+    width: 100%;
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    background-size: cover;
+    -webkit-transition: height 1s;
+    margin:0;
+    /*position: relative;*/
+    /*transform: scale(1, 1);*/
+}
+
+#page-1
+{
+
+    background: url(../images/header.jpg) no-repeat center center;
+    /*background-color:green;*/
+}
+
+#VRRooms
+{
+    /*background-color: #d5d5d5;*/
+
+    /*background: url(../images/the-lab-on-steam-archery.jpg) no-repeat center center;*/
+
+}
+
+@media screen and (max-width: 640px)
+{
+    body
+    {
+        height:986px;
+        /*background-color: lightgreen;*/
+    }
+}
+
+/*@media (min-width: 320px) and (max-width: 1024px)*/
+/*{*/
+    /*#VRRooms*/
+    /*{*/
+        /*width:100%;*/
+    /*}*/
+/*}*/
+
+/*.container-fluid{*/
+    /*!*border:black solid 2px;*!*/
+    /*width: 1800px;*/
+    /*!*text-align: center;*!*/
+/*}*/
 
 #elektroMarkt {
     height: 240px;
@@ -109,8 +165,6 @@ body {
     background: url(../images/elektro_markt.png) no-repeat;
     margin: 0 auto ;
     background-position-y: -100px;
-
-
 }
 
 #elektroMarktLogo {
@@ -133,7 +187,6 @@ body {
     color: #FF958B;
     position: relative;
     top: 95px;
-
 }
 
 #mainTitle {
@@ -144,7 +197,7 @@ body {
     text-transform: uppercase;
     color: #f5f5f5;
     text-shadow: 0 5px 8px rgba(88, 88, 88, 0.7);
-    transform: scale(1, 1.4);
+    transform: scale(0.5, 0.5);
 }
 
 #mainTitleDescription {

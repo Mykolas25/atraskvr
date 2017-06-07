@@ -6,6 +6,9 @@ return [
     'header_description' => 'No translation',
     'language' => 'Language',
     'about' => 'About',
-    'rooms' => 'Rooms'
+    'rooms' => 'Rooms',
+    'contacts' => 'Contacts',
+    'tickets' => 'Tickets',
+    'time-and-location' => 'Time and location'
 ];
 

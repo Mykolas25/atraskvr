@@ -32,8 +32,7 @@
                         </li>
                     @else
                         @if($menuItem['title'])
-                            {{--page-1--}}
-                               <li><a href="#{{$menuItem['title']}}">{{$menuItem['title']}}</a></li>
+                               <li><a href="#{{$menuItem['slug']}}">{{$menuItem['title']}}</a></li>
                         @endif
                     @endif
 

@@ -8,13 +8,13 @@
 
     <body>
 
-        @include('front-end.includes.navigation')
-        @yield('content')
+            @include('front-end.includes.navigation')
+            @yield('content')
 
-        @include('front-end.includes.js')
-        @yield('script')
+            @include('front-end.includes.js')
+            @yield('script')
 
-        @include('front-end.includes.footer')
+            @include('front-end.includes.footer')
 
 
     </body>
