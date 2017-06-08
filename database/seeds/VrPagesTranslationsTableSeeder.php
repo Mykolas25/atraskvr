@@ -101,6 +101,34 @@ class VrPagesTranslationsTableSeeder extends Seeder
                 'description_short' => 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.',
                 'slug' => 'ktu-paraglider',
             ),
+            6 => 
+            array (
+                'count' => 9,
+                'id' => 'f7057276-970a-44c9-8006-e6111a6e1027',
+                'created_at' => '2017-06-08 16:27:24',
+                'updated_at' => '2017-06-08 16:27:24',
+                'deleted_at' => NULL,
+                'pages_id' => 'b852de66-6978-45c9-b467-6824e06052db',
+                'languages_id' => 'lt',
+                'title' => 'Apie',
+                'description_long' => 'Virtuali realybė vis labiau skverbiasi į mūsų kasdienybę ir visas sritis nuo pramogų iki mokslo. Todėl pristatome unikalią galimybę rytojų pamatyti jau dabar! Jaudinanti ir įtraukianti patirtis garantuota visiems - ir pirmą kartą išmėginsiantiems virtualią realybę, ir tiems, kurie jau žino, kas tai yra. 10 skirtingų patirčių ir net 60 minučių įspūdžių, adrenalino ir atradimų laukia kiekvieno apsilankusiojo. Paruošėme trijų skirtingų sudėtingumo lygių patirtis - nuo irklavimo Galvės ežere ar leidimosi parašiutu iki Mini golfo žaidimo ant pilies sienų ar stebuklingo gėrimo gamybos. Tačiau neabejojame, jog norėsi išbandyti visas! Virtuali realybė suteikia progą pažvelgti į pasaulį kitomis akimis ir iš paprasto stebėtojo virsti veiksmo dalyviu. Aukštos kokybės grafika, realūs vaizdai ir galimybė interaktyviai dalyvauti patirtyje tiesiog įtraukia! Tad ateik, užsidėk VR akinius ir atsidurk kitame pasaulyje, kur pojūčiai yra visai ne virtualūs! Pasiimk ir draugą, kad palaikytų už rankos, nes įspūdžių netrūks.',
+                'description_short' => 'translation value',
+                'slug' => 'apie',
+            ),
+            7 => 
+            array (
+                'count' => 10,
+                'id' => '11a39e6e-3d96-42c5-b98a-e06e41b0b2c9',
+                'created_at' => '2017-06-08 16:27:24',
+                'updated_at' => '2017-06-08 16:27:24',
+                'deleted_at' => NULL,
+                'pages_id' => 'b852de66-6978-45c9-b467-6824e06052db',
+                'languages_id' => 'en',
+                'title' => 'About',
+                'description_long' => 'translation value',
+                'description_short' => 'translation value',
+                'slug' => 'about',
+            ),
         ));
         
         

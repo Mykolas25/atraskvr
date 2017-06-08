@@ -15,55 +15,41 @@ class FrontEndController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
+
+
         $configuration['menu'] = VRMenusTranslations::where('languages_id', app()->getLocale())->get()->toArray();
-        $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->get()->toArray();
-//        $configuration['experiences'] = VRPages::get()->toArray();
-
-
-            foreach($configuration['pages'] as $pages)
-            {
-                foreach($pages['pages_connected_images'] as $mediaFile)
-                {
-                    $connectedMediaData[] = $mediaFile['resources_connected_images'];
-                    $configuration['connectedMediaData'] = $connectedMediaData;
-                    if($mediaFile['resources_connected_images']['mime_type'] == "image/jpeg" || "image/png")
-                    {
-                        $configuration['image'][] = $mediaFile['resources_connected_images']['path'];
-                    }
-                    if($mediaFile['resources_connected_images']['mime_type'] == "video/mp4")
-                    {
-                        $configuration['video'][] = $mediaFile['resources_connected_images']['path'];
-                    }
-                }
-            }
-
-
-
-
+        $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->where('deleted_at','=', null)->get()->toArray();
+        $configuration['aboutMedia'] =  $this->mediaFiles($configuration['pages']);
 
         return view('front-end.index', $configuration);
     }
 
 
 
-    public function mediaFiles($id)
+    public function mediaFiles($data)
     {
-        $config['mediaFilesShow'] = VRpages::with('resourceImage','pagesConnectedImages')->where('id', '=', $id)->get()->toArray();
-        if(isset($config['mediaFilesShow']))
+        $imgArray = [];
+        $vidArray = [];
+
+        $imgArray = ["image/jpeg","image/png"];
+        $vidArray = ["video/mp4"];
+        if(isset($data))
         {
-            foreach($config['mediaFilesShow'] as $mediaFiles)
+            foreach($data as $mediaFiles)
             {
                 foreach($mediaFiles['pages_connected_images'] as $mediaFile)
                 {
                     $connectedMediaData[] = $mediaFile['resources_connected_images'];
                     $config['connectedMediaData'] = $connectedMediaData;
-                    if($mediaFile['resources_connected_images']['mime_type'] == "image/jpeg" || "image/png")
+                    if(in_array($mediaFile['resources_connected_images']['mime_type'], $imgArray))
                     {
                         $config['image'][] = $mediaFile['resources_connected_images']['path'];
                     }
-                    if($mediaFile['resources_connected_images']['mime_type'] == "video/mp4")
+                    if(in_array($mediaFile['resources_connected_images']['mime_type'],$vidArray))
                     {
                         $config['video'][] = $mediaFile['resources_connected_images']['path'];
                     }

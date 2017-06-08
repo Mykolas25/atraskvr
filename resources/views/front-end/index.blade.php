@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-
+{{--{{dd($pages)}}--}}
 {{--About--}}
 <div id="mainAbout">
     <div id="{{trans('app.about')}}">
@@ -23,47 +23,55 @@
     {{trans('app.about')}}
     </div>
         <div id="aboutDescription">
-
-           @if(isset($video))
-               <div id="aboutVideo">
-                   <video id="my-video" class="video-js" controls preload="auto"
-                          poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-                       <source src="{{asset($video[0])}}" type='video/mp4'>
-                       {{--<source src="MY_VIDEO.webm" type='video/webm'>--}}
-                       <p class="vjs-no-js">
-                           To view this video please enable JavaScript, and consider upgrading to a web browser that
-                           <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                       </p>
-                   </video>
-               </div>
+               @if(isset($aboutMedia['video']))
+                    <div id="aboutVideo">
+                        <video id="my-video" class="video-js" controls preload="auto"
+                               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                            <source src="{{asset($aboutMedia['video'][0])}}" type='video/mp4'>
+                            {{--<source src="MY_VIDEO.webm" type='video/webm'>--}}
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
+                    </div>
                 @elseif(isset($image))
-                <img style="width:70px" src={{asset($image['0'])}}>
-            @endif
+                    <img style="width:70px" src={{asset($image['0'])}}>
+                @endif
 
+           @foreach($pages as $page)
+
+               @if(isset($page['pages_categories_id']) && $page['name']=='Apie')
+                   @foreach($page['translations'] as $translations)
+                      <div id="aboutText">
+                         <p>{{$translations['description_long']}}</p>
+                      </div>
+               @endforeach
+               @endif
+           @endforeach
         </div>
     </div>
 </div>
 
-{{--Virtual rooms--}}
 
+{{--Virtual rooms--}}
 <div id="{{trans('app.rooms')}}">
     <div id="VRRooms">
             <div id="mainTitle">
-                {{--{{trans('app.main_title')}}--}}
             </div>
             @foreach($pages as $page)
-                {{--{{dd($page['resource_image']['path'])}}--}}
                     @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
                         <div class="experience">
+                            @foreach($page['translations'] as $translations)
+                                <div id = descriptionMain>
+                                    <div class="description">
+                                        {{$translations['description_long']}}
+                                    </div>
+                                </div>
+                            @endforeach
                             <div class="experienceImage">
                                 <img src="{{asset($page['resource_image']['path'])}}">
                             </div>
-                            @foreach($page['translations'] as $translations)
-                                <div class="description">
-                                    {{$translations['description_long']}}
-                                    {{$translations['description_short']}}
-                                </div>
-                            @endforeach
                         </div>
                     @endif
             @endforeach

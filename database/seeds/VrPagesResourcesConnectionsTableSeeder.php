@@ -12,7 +12,7 @@ class VrPagesResourcesConnectionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         \DB::table('vr_pages_resources_connections')->delete();
         
@@ -28,7 +28,8 @@ class VrPagesResourcesConnectionsTableSeeder extends Seeder
                 'resources_id' => '5d69fa89-fe75-4926-871c-3d59e1778de2',
             ),
         ));
-        
-        
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
+
 }

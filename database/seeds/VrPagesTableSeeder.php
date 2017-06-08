@@ -12,11 +12,9 @@ class VrPagesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
-        \DB::table('vr_pages')->delete();
-        
-        \DB::table('vr_pages')->insert(array (
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('vr_pages')->delete();
+        DB::table('vr_pages')->insert(array (
             0 => 
             array (
                 'count' => 1,
@@ -73,7 +71,7 @@ class VrPagesTableSeeder extends Seeder
                 'cover_image_id' => NULL,
             ),
         ));
-        
-        
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

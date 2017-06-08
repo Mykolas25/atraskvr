@@ -12,8 +12,8 @@ class VrPagesCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         \DB::table('vr_pages_categories')->delete();
         
         \DB::table('vr_pages_categories')->insert(array (
@@ -45,7 +45,7 @@ class VrPagesCategoriesTableSeeder extends Seeder
                 'name' => 'apie_kategorija',
             ),
         ));
-        
-        
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

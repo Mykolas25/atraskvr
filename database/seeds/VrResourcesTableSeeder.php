@@ -12,11 +12,10 @@ class VrResourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('vr_resources')->delete();
-        
-        \DB::table('vr_resources')->insert(array (
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('vr_resources')->delete();
+        DB::table('vr_resources')->insert(array (
             0 => 
             array (
                 'count' => 1,
@@ -83,7 +82,7 @@ class VrResourcesTableSeeder extends Seeder
                 'size' => 22806681,
             ),
         ));
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         
     }
 }

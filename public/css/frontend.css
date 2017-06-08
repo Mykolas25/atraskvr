@@ -105,6 +105,8 @@ body {
     /*transform: scale(1, 1);*/
 }
 
+
+/*About*/
 #mainAbout
 {
     margin-top:20px;
@@ -133,6 +135,21 @@ body {
     height:500px;
 }
 
+#aboutText
+{
+    margin:auto;
+    margin-top:20px;
+    padding:5px;
+    width:700px;
+    height:350px;
+    border:2px red solid;
+
+}
+
+/*///////*/
+
+
+/*Rooms Experiences*/
 #VRRooms
 {
     margin-top:2px;
@@ -174,11 +191,13 @@ body {
     margin-top:20px;
     padding:10px;
     overflow: hidden;
+
+    /*border:2px green solid;*/
 }
 
-.experienceImage
+.experienceImage, #descriptionMain
 {
-    /*margin:20px;*/
+    padding:20px;
     width:50%;
     height:50%;
     float:left;
@@ -191,18 +210,23 @@ body {
 {
     width:500px;
     height:350px;
-    float:right;
+    float:left;
     margin:0 20px 0 20px;
-}
 
+    /*border:2px red solid;*/
+}
 .description
 {
-    width:20%;
-    height:50%;
-    float:left;
-    /*border:2px red solid;*/
+    max-width: 500px;
+    /*height:350px;*/
+    float:right;
+    margin:0 20px 0 20px;
     overflow: hidden;
+
+    /*border:2px yellow solid;*/
 }
+
+
 
 @media screen and (max-width: 640px)
 {
