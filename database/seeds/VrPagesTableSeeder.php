@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\VRPages;
 use Illuminate\Database\Seeder;
 
 class VrPagesTableSeeder extends Seeder
@@ -10,12 +11,15 @@ class VrPagesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
 
-        \DB::table('vr_pages')->delete();
-        
-        \DB::table('vr_pages')->insert(array (
+//        \DB::table('vr_pages')->delete();
+
+        public function run()
+    {
+        DB::table('vr_menus')->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+        $list = [
             5 => 
             array (
                 'count' => 1,
@@ -49,8 +53,23 @@ class VrPagesTableSeeder extends Seeder
                 'pages_categories_id' => 'vr_categories_id',
                 'cover_image_id' => 'b64eca6f-5e35-4615-a764-8fe239eb5fc0',
             ),
-        ));
-        
-        
+        ];
+
+
+        DB::beginTransaction();
+        try {
+            foreach ($list as $single) {
+                $record = VRPages::find($single['id']);
+                if(!$record) {
+                    VRPages::create($single);
+                }
+            }
+        } catch(Exception $e) {
+            DB::rollback();
+            throw new Exception($e);
+        }
+        DB::commit();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\VRMenus;
+use App\Models\VRPages;
 use Illuminate\Database\Seeder;
 
 class VrMenusTableSeeder extends Seeder
@@ -10,13 +12,16 @@ class VrMenusTableSeeder extends Seeder
      *
      * @return void
      */
+
+
+
+
     public function run()
     {
-        
 
-        \DB::table('vr_menus')->delete();
-        
-        \DB::table('vr_menus')->insert(array (
+        DB::table('vr_menus')->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        $list = [
             0 => 
             array (
                 'count' => 1,
@@ -67,8 +72,23 @@ class VrMenusTableSeeder extends Seeder
                 'parent_id' => 'de03dc0d-79d1-4489-9af6-066eed9ad53c',
                 'name' => 'Vieta ir laikas',
             ),
-        ));
-        
-        
+        ];
+
+        DB::beginTransaction();
+        try {
+            foreach ($list as $single) {
+                $record = VRMenus::find($single['id']);
+                if(!$record) {
+                    VRMenus::create($single);
+                }
+            }
+        } catch(Exception $e) {
+            DB::rollback();
+            throw new Exception($e);
+        }
+        DB::commit();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        }
+
+
     }
-}

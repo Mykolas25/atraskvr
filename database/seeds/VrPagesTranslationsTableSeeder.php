@@ -12,11 +12,11 @@ class VrPagesTranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('vr_pages_translations')->delete();
-        
-        \DB::table('vr_pages_translations')->insert(array (
+
+        DB::table('vr_pages_translations')->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('vr_pages_translations')->insert(array (
             0 => 
             array (
                 'count' => 3,
@@ -102,7 +102,7 @@ class VrPagesTranslationsTableSeeder extends Seeder
                 'slug' => 'ktu-paraglider',
             ),
         ));
-        
-        
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

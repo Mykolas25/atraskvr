@@ -12,11 +12,10 @@ class VrMenusTranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('vr_menus_translations')->delete();
-        
-        \DB::table('vr_menus_translations')->insert(array (
+        DB::table('vr_menus_translations')->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('vr_menus_translations')->insert(array (
             0 => 
             array (
                 'count' => 1,
@@ -114,7 +113,7 @@ class VrMenusTranslationsTableSeeder extends Seeder
                 'slug' => 'place-and-time',
             ),
         ));
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         
     }
 }
