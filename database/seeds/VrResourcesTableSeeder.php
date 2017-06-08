@@ -12,10 +12,11 @@ class VrResourcesTableSeeder extends Seeder
      */
     public function run()
     {
+        
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('vr_resources')->delete();
-        DB::table('vr_resources')->insert(array (
+        \DB::table('vr_resources')->delete();
+        
+        \DB::table('vr_resources')->insert(array (
             0 => 
             array (
                 'count' => 1,
@@ -55,8 +56,34 @@ class VrResourcesTableSeeder extends Seeder
                 'height' => NULL,
                 'size' => 47075,
             ),
+            3 => 
+            array (
+                'count' => 4,
+                'id' => 'f5b0f3cd-23d6-4e19-8769-05a3503bef98',
+                'created_at' => '2017-06-08 08:51:37',
+                'updated_at' => '2017-06-08 08:51:37',
+                'deleted_at' => NULL,
+                'mime_type' => 'image/jpeg',
+                'path' => 'upload/2017/06/08/1496911897_the-lab-on-steam-archery.jpg',
+                'width' => NULL,
+                'height' => NULL,
+                'size' => 67079,
+            ),
+            4 => 
+            array (
+                'count' => 5,
+                'id' => '5d69fa89-fe75-4926-871c-3d59e1778de2',
+                'created_at' => '2017-06-08 09:02:03',
+                'updated_at' => '2017-06-08 09:02:03',
+                'deleted_at' => NULL,
+                'mime_type' => 'video/mp4',
+            'path' => 'upload/2017/06/08/1496912522_akropolis_be_samsung_youtube (1).mp4',
+                'width' => NULL,
+                'height' => NULL,
+                'size' => 22806681,
+            ),
         ));
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        
         
     }
 }

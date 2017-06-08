@@ -10,7 +10,8 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         $this->call(RolesSeeder::class);
         $this->call( PagesCategoriesSeeder::class);
         $this->call(LanguagesSeeder::class);
@@ -21,5 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(VrMenusTranslationsTableSeeder::class);
         $this->call(VrMenusTableSeeder::class);
         $this->call(VrPagesTranslationsTableSeeder::class);
+        $this->call(VrPagesResourcesConnectionsTableSeeder::class);
+        $this->call(VrPagesCategoriesTableSeeder::class);
+        $this->call(VrPagesCategoriesTranslationsTableSeeder::class);
     }
 }
