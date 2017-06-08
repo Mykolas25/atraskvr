@@ -57,6 +57,8 @@
 
 {{--display media--}}
                         @if(array_key_exists ('path', $record))
+                            {{--{{dd($record)}}--}}
+
                             @if($record['mime_type'] == "image/jpeg" || $record['mime_type'] == "png")
                                 <td>
                                     <a href="#"><img src="{{URL::asset($record['path'])}}" alt="Forest" width="80" height="150"/></a>
@@ -75,8 +77,8 @@
                         @foreach($record as $key_data => $value_data)
 
                             @foreach($fields as $key => $value)
-                                @if($key_data == $value and $key_data == 'cover_image_id')
-                                        <td><img style="width:70px" src={{asset($coverImages[$value_data])}}></td>
+                                @if(isset($record['cover_image_id']) and $key_data == $value and $key_data == 'cover_image_id')
+                                    <td><img style="width:70px" src={{asset($coverImages[$value_data])}}></td>
                                 @elseif($key_data == $value and $key_data == 'pages_categories_id')
                                     <td>{{$categories[$record['pages_categories_id']]}}</td>
                                 @elseif($key_data == $value and $key_data == 'parent_id')

@@ -18,10 +18,67 @@ class FrontEndController extends Controller
     public function index()
     {
         $configuration['menu'] = VRMenusTranslations::where('languages_id', app()->getLocale())->get()->toArray();
-        $configuration['pages'] = VRPages::with('resourceImage', 'translations')->where('pages_categories_id', 'vr_categories_id')->get()->toArray();
+        $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->get()->toArray();
 //        $configuration['experiences'] = VRPages::get()->toArray();
+
+
+            foreach($configuration['pages'] as $pages)
+            {
+                foreach($pages['pages_connected_images'] as $mediaFile)
+                {
+                    $connectedMediaData[] = $mediaFile['resources_connected_images'];
+                    $configuration['connectedMediaData'] = $connectedMediaData;
+                    if($mediaFile['resources_connected_images']['mime_type'] == "image/jpeg" || "image/png")
+                    {
+                        $configuration['image'][] = $mediaFile['resources_connected_images']['path'];
+                    }
+                    if($mediaFile['resources_connected_images']['mime_type'] == "video/mp4")
+                    {
+                        $configuration['video'][] = $mediaFile['resources_connected_images']['path'];
+                    }
+                }
+            }
+
+
+
+
+
         return view('front-end.index', $configuration);
     }
+
+
+
+    public function mediaFiles($id)
+    {
+        $config['mediaFilesShow'] = VRpages::with('resourceImage','pagesConnectedImages')->where('id', '=', $id)->get()->toArray();
+        if(isset($config['mediaFilesShow']))
+        {
+            foreach($config['mediaFilesShow'] as $mediaFiles)
+            {
+                foreach($mediaFiles['pages_connected_images'] as $mediaFile)
+                {
+                    $connectedMediaData[] = $mediaFile['resources_connected_images'];
+                    $config['connectedMediaData'] = $connectedMediaData;
+                    if($mediaFile['resources_connected_images']['mime_type'] == "image/jpeg" || "image/png")
+                    {
+                        $config['image'][] = $mediaFile['resources_connected_images']['path'];
+                    }
+                    if($mediaFile['resources_connected_images']['mime_type'] == "video/mp4")
+                    {
+                        $config['video'][] = $mediaFile['resources_connected_images']['path'];
+                    }
+                }
+            }
+        }
+        return $config;
+    }
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

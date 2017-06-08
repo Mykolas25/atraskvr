@@ -1,4 +1,4 @@
-@extends('admin.main')
+    @extends('admin.main')
 
 @section('content')
 
@@ -26,11 +26,10 @@
             </tr>
             </thead>
             <tbody>
-
             @foreach($record as $key => $value)
                 <tr id="{{$record['id']}}">
                     {{--Single Record and single page cover image display--}}
-                    @if(($key == 'cover_image_id' && $tableName == 'pages') || ($key == "mime_type" && $tableName == 'resources'))
+                    @if((isset($mediaInfo) && $key == 'cover_image_id' && $tableName == 'pages') || ($key == "mime_type" && $tableName == 'resources'))
                         @if($mediaInfo['mime_type'] == "image/jpeg" ||$mediaInfo['mime_type'] == "png")
                             <td>{{$key}}</td>
                             <td>{{$value}}</td>

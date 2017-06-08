@@ -108,21 +108,21 @@ class VRPagesController extends Controller
 
         $missingValues = '';
 
-        foreach ($configuration['fields'] as $key => $value)
-        {
-            if ($value == 'pages_categories_id')
-            {}
-
-            elseif (!isset($data['cover_image_id']))
-            {
-                $missingValues = 'Please add cover image' . ',';
-            }
-
-            elseif (!isset($data[$value]))
-            {
-                $missingValues = $missingValues . ' ' . $value . ',';
-            }
-        }
+//        foreach ($configuration['fields'] as $key => $value)
+//        {
+//            if ($value == 'pages_categories_id')
+//            {}
+//
+//            elseif (!isset($data['cover_image_id']))
+//            {
+//                $missingValues = 'Please add cover image' . ',';
+//            }
+//
+//            elseif (!isset($data[$value]))
+//            {
+//                $missingValues = $missingValues . ' ' . $value . ',';
+//            }
+//        }
 
         if ($missingValues != '')
         {
@@ -162,15 +162,20 @@ class VRPagesController extends Controller
         $dataFromModel = new VRPages();
         $configuration['record'] = VRPages::find($id)->toArray();
 
+        if (isset($configuration['record']['cover_image_id']))
+        {
         $configuration['mediaInfo'] = VRResources::find($configuration['record']['cover_image_id'])->toArray();
+        $resourcesTable_id = VRPages::find($id)->cover_image_id;
+        $configuration['image'] = VRResources::find($resourcesTable_id)->path;
+        }
 
         $configuration['tableName'] = $dataFromModel->getTableName();
 
         $pagesCategoriesId = VRPages::find($id)->pages_categories_id;
         $configuration['category'] = VRPagesCategories::find($pagesCategoriesId)->name;
 
-        $resourcesTable_id = VRPages::find($id)->cover_image_id;
-        $configuration['image'] = VRResources::find($resourcesTable_id)->path;
+//        $resourcesTable_id = VRPages::find($id)->cover_image_id;
+//        $configuration['image'] = VRResources::find($resourcesTable_id)->path;
 
         $dataFromModel2 = new VRPagesTranslations();
         $configuration['fields_translations'] = $dataFromModel2->getFillable();

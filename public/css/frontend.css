@@ -87,9 +87,7 @@ body {
     position: fixed;
     width: 100%;
     z-index: 500;
-
 }
-
 
 #page-1
 {
@@ -107,6 +105,34 @@ body {
     /*transform: scale(1, 1);*/
 }
 
+#mainAbout
+{
+    margin-top:20px;
+    background-color: #d5d5d5;
+    padding-bottom:50px;
+    border:black solid 2px;
+}
+
+#aboutDescription
+{
+    border:black solid 2px;
+    padding: 20px;
+}
+
+#aboutVideo
+{
+    width:700px;
+    height:500px;
+    border:black solid 2px;
+    margin:auto;
+}
+
+#my-video
+{
+    width:700px;
+    height:500px;
+}
+
 #VRRooms
 {
     margin-top:2px;
@@ -114,6 +140,30 @@ body {
 
     /*border:2px black solid;*/
     /*background-color:green;*/
+}
+
+#mainContacts
+{
+    margin-top:20px;
+    background-color: #1b6d85;
+}
+
+#mainTickets
+{
+    margin-top:20px;
+    background-color: #a94442;
+}
+
+#mainSponsors
+{
+    margin-top:20px;
+    background-color: #d6e9c6;
+}
+
+#mainTimeLocation
+{
+    margin-top:20px;
+    background-color: darkgreen;
 }
 
 .experience
