@@ -18,20 +18,15 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menuItem['title']}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
 
-                                @foreach($pages as $page)
-
-                                    @foreach($page['translations'] as $translations)
-
+                                @foreach($pagesLang as $translations)
                                         <li><a href="#">{{$translations['title']}}</a></li>
-
-                                    @endforeach
-
                                 @endforeach
 
                             </ul>
                         </li>
                     @else
                         @if($menuItem['title'])
+                            {{--{{dd($menuItem['title'])}}--}}
                                <li><a href="#{{$menuItem['slug']}}">{{$menuItem['title']}}</a></li>
                         @endif
                     @endif

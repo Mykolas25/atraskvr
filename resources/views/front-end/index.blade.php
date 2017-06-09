@@ -15,18 +15,18 @@
         </div>
     </div>
 </div>
-{{--{{dd($pages)}}--}}
+
 {{--About--}}
 <div id="mainAbout">
     <div id="{{trans('app.about')}}">
-    <div id="mainTitle">
-    {{trans('app.about')}}
+        <div id="mainTitle">
+        {{trans('app.about')}}
     </div>
         <div id="aboutDescription">
                @if(isset($aboutMedia['video']))
                     <div id="aboutVideo">
                         <video id="my-video" class="video-js" controls preload="auto"
-                               poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                        {{--poster="{{asset('images/the-lab-on-steam-archery.jpg')}}" data-setup="{}">--}}
                             <source src="{{asset($aboutMedia['video'][0])}}" type='video/mp4'>
                             {{--<source src="MY_VIDEO.webm" type='video/webm'>--}}
                             <p class="vjs-no-js">
@@ -40,13 +40,13 @@
                 @endif
 
            @foreach($pages as $page)
-
                @if(isset($page['pages_categories_id']) && $page['name']=='Apie')
                    @foreach($page['translations'] as $translations)
                       <div id="aboutText">
                          <p>{{$translations['description_long']}}</p>
                       </div>
                @endforeach
+
                @endif
            @endforeach
         </div>
@@ -57,24 +57,46 @@
 {{--Virtual rooms--}}
 <div id="{{trans('app.rooms')}}">
     <div id="VRRooms">
-            <div id="mainTitle">
+            <div id="mainTitleRooms">
+                <div id="mainTitle">
+                    {{--{{trans('Virtualus kambariai')}}--}}
+                </div>
             </div>
             @foreach($pages as $page)
+                @foreach($pagesLang as $translations)
+                @if($page['id'] == $translations['pages_id'])
                     @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
+                        <div id="mainMainExperience">
                         <div class="experience">
-                            @foreach($page['translations'] as $translations)
-                                <div id = descriptionMain>
-                                    <div class="description">
-                                        {{$translations['description_long']}}
+
+
+
+                                <div id="mainExperiences">
+                                    <div id = "experienceName">
+                                        <div id="{{trans($translations['title'])}}">
+                                            <p>{{$translations['title']}}</p>
+                                        </div>
                                     </div>
+                        @foreach($page['translations'] as $translations)
+                            <div id="descriptionMain">
+                                <div class="description">
+                                    {{$translations['description_short']}}
                                 </div>
-                            @endforeach
+                            </div>
+
+                        @endforeach
                             <div class="experienceImage">
                                 <img src="{{asset($page['resource_image']['path'])}}">
                             </div>
+
+
+                          </div>
                         </div>
+                        @endif
                     @endif
             @endforeach
+            @endforeach
+
     </div>
 </div>
 

@@ -12,8 +12,8 @@ class VrPagesTranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         \DB::table('vr_pages_translations')->delete();
         
         \DB::table('vr_pages_translations')->insert(array (
@@ -130,7 +130,7 @@ class VrPagesTranslationsTableSeeder extends Seeder
                 'slug' => 'about',
             ),
         ));
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         
     }
 }
