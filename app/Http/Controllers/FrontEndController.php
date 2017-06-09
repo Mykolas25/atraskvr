@@ -19,8 +19,6 @@ class FrontEndController extends Controller
 
     public function index()
     {
-
-
         $configuration['menu'] = VRMenusTranslations::where('languages_id', app()->getLocale())->get()->toArray();
         $configuration['pagesLang'] = VRPagesTranslations::where('languages_id', app()->getLocale())->get()->toArray();
         $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->where('deleted_at','=', null)->get()->toArray();
