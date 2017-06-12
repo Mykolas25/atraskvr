@@ -202,24 +202,9 @@ body {
     /*border:2px yellow solid;*/
 }
 
-#mainMainExperience
+#experiencesMain
 {
-    /*margin:auto;*/
-    /*height:100%;*/
-    /*width:1500px;*/
-    /*padding-top:20px;*/
-
-    /*background-color:#00004d;*/
-    /*margin:auto;*/
-    /*box-shadow: 0px 0px 10px 10px black;*/
-    /*padding:20px;*/
-    /*width:1000px;*/
-
-    /*overflow: hidden;*/
-    /*!*border:2px red solid;*!*/
-    /*background-color: #000066;*/
-    /*background: linear-gradient(to right, #000066 , silver ); !* Standard syntax *!*/
-
+    /*border:10px white solid;*/
 }
 
 .experienceWhite
@@ -248,19 +233,14 @@ body {
     /*background: linear-gradient(to right, #000066 , silver ); !* Standard syntax *!*/
 }
 
-#mainExperiences
-{
 
-}
-
-.experienceImage, #descriptionMain
+#descriptionMain, .experienceImage
 {
     padding:20px;
     width:50%;
     height:50%;
     float:left;
     overflow: hidden;
-
 
     /*border:2px black solid;*/
 }

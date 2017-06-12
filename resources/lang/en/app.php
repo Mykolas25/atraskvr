@@ -9,6 +9,6 @@ return [
     'rooms' => 'Rooms',
     'contacts' => 'Contacts',
     'tickets' => 'Tickets',
-    'time-and-location' => 'Time and location'
+    'time-and-location' => 'Time and location',
 ];
 

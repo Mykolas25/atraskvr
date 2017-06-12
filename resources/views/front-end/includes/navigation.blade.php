@@ -19,7 +19,7 @@
                         <ul class="dropdown-menu">
 
                                 @foreach($pagesLang as $translations)
-                                        <li><a href="#">{{$translations['title']}}</a></li>
+                                        <li><a href="#{{$translations['slug']}}">{{$translations['title']}}</a></li>
                                 @endforeach
 
                             </ul>
