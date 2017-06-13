@@ -282,12 +282,6 @@ body {
     background-color: #1b6d85;
 }
 
-#mainTickets
-{
-    margin-top:20px;
-    background-color: #a94442;
-}
-
 #mainSponsors
 {
     margin-top:20px;
@@ -389,6 +383,98 @@ body {
 
 }
 
+/*reservation index*/
+
+#mainTickets
+{
+    margin-top:20px;
+    background-color:black;
+    background: url("../images/1497346508_posterscreen.jpg") no-repeat center center;
+    background-size: 100%;
+
+    filter: brightness(0.4);
+
+}
+
+#mainTicketBody
+{
+
+}
+
+#ticketDescription
+{
+    margin: auto;
+    height: 200px;
+    width: 500px;
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding:20px;
+
+}
 
 
 
+/*reservation page*/
+
+.experience-checkbox-group {
+
+    width: 80%;
+    display: block;
+    padding: 25px;
+    margin: 0 auto;
+}
+
+input[type=checkbox] {
+    width: 30px;
+    background-color: red;
+}
+
+
+
+.displayChosenDate {
+    padding: 20px;
+    margin: 50px;
+    text-align: center;
+    clear:both;
+
+    border:2px solid black;
+}
+
+.submit-button {
+    margin: 40px 0;
+}
+
+#mainReservationDates
+{
+    padding:20px;
+    margin:auto;
+
+    /*border:2px solid black;*/
+}
+
+#reservationDates
+{
+    float:right;
+}
+
+#experiencesDropdown
+{
+    margin:auto;
+    margin-bottom:20px;
+    text-align:center;
+
+    /*border:2px solid black;*/
+
+}
+
+#reservationSubmitButton
+{
+    text-align: center;
+    margin:auto;
+    padding:20px;
+    margin-bottom:20px;
+
+    /*border:2px solid black;*/
+}

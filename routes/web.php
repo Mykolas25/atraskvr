@@ -262,6 +262,30 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+Route::group(['prefix' => 'users'], function () {
+
+    Route::group(['prefix' => 'reservations'], function () {
+
+    Route::get('/', ['as' => 'app.usersReservations.index','uses' => 'VRFrontEndReservationController@index']);
+
+    Route::get('/create/{date?}', ['as' => 'app.usersReservations.create','uses' => 'VRFrontEndReservationController@create']);
+    Route::post('/create', ['as' => 'app.usersReservations.store', 'uses' => 'VRFrontEndReservationController@store']);
+
+    Route::group(['prefix' => '{id}'], function () {
+
+        Route::get('/edit', ['as' => 'app.users.edit', 'uses' => 'VRFrontEndReservationController@udit']);
+        Route::post('/edit', ['as' => 'app.users.update', 'uses' => 'VRFrontEndReservationController@update']);
+
+        Route::get('/', ['as' => 'app.users.show', 'uses' => 'VRFrontEndReservationController@show']);
+        Route::delete('/', ['as' => 'app.users.delete', 'uses' => 'VRFrontEndReservationController@destroy']);
+
+    });
+
+    });
+});
+
+
+
 
 
 

@@ -12,14 +12,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-class VRReservationsController extends Controller
+class VRFrontEndReservationController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      * Function displays all Reservations existing in data base
      */
-    public function adminIndex()
+    public function index()
     {
         $message = Session()->get('message');
         $configuration['message'] = $message;
@@ -53,7 +53,7 @@ class VRReservationsController extends Controller
         return $dates;
     }
 
-    public function adminCreate($date = null, $message = null)
+    public function create($date = null, $message = null)
     {
 
         if ($date == null)
@@ -66,7 +66,7 @@ class VRReservationsController extends Controller
         $endTime2 = Carbon::today()->addHour(22);
         $startDate = Carbon::today();
         $endDate = Carbon::today()->addWeek(2);
-         $timeNow = Carbon::now(+2)->addHours(1);
+        $timeNow = Carbon::now(+2)->addHours(1);
 
         $allTimes = $this->generateDateRange($startTime2, $endTime2, 'addMinutes', 10, 'Y-m-d H:i');
 
@@ -93,10 +93,10 @@ class VRReservationsController extends Controller
         $configuration['disabledTimes'] = $disabledTimes;
         $configuration['today'] = Carbon::today()->toDateString();
 
-        return view('admin.reservation', $configuration);
+        return view('front-end.reservation.reservation', $configuration);
     }
 
-    public function adminStore()
+    public function store()
     {
 
         $timesReserved = VRReservations::pluck('time', 'pages_id');
@@ -116,11 +116,11 @@ class VRReservationsController extends Controller
                 }
             }
         }
-            if(!strlen($message) > 0){
+        if(!strlen($message) > 0){
 
-                $order = VROrders::create([
-                    'status' => 'reserved'
-                ]);
+            $order = VROrders::create([
+                'status' => 'reserved'
+            ]);
 
             foreach ($data as $key => $value) {
 
@@ -132,12 +132,12 @@ class VRReservationsController extends Controller
 
                 ]);
             }
-            } else {
+        } else {
 
-                return $this->adminCreate(null, $message);
-            }
+            return $this->create(null, $message);
+        }
         $message = 'Time reserved successfully!';
-        return $this->adminCreate(null, $message);
+        return $this->create(null, $message);
 
     }
 

@@ -16,6 +16,5 @@
 
             @include('front-end.includes.footer')
 
-
     </body>
 </html>

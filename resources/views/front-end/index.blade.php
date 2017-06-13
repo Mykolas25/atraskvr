@@ -105,6 +105,37 @@
 
         </div>
     </div>
+</div>
+
+    {{--tickets--}}
+        <div id="mainTickets">
+            <div id="{{trans('app.tickets')}}">
+                <div id="mainTitle">
+                    {{trans('app.tickets')}}
+                </div>
+
+                <div id="mainTicketBody">
+
+                    <div id="ticketDescription">
+
+                        <p>5 Patirčių kaina:</p>
+                        <p>6 Eurai</p>
+
+                        <a class="btn btn-success btn-sm" href="{{route('app.usersReservations.create')}}"><i class="fa fa-pencil fa-sm" aria-hidden="true"></i>Make reservation</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {{--time and location--}}
+    <div id="mainTimeLocation">
+        <div id="{{trans('app.time-and-location')}}">
+            <div id="mainTitle">
+                {{trans('app.time-and-location')}}
+            </div>
+        </div>
+    </div>
 
     {{--contacts--}}
     <div id="mainContacts">
@@ -115,29 +146,11 @@
         </div>
     </div>
 
-    {{--tickets--}}
-    <div id="mainTickets">
-        <div id="{{trans('app.tickets')}}">
-            <div id="mainTitle">
-                {{trans('app.tickets')}}
-            </div>
-        </div>
-    </div>
-
     {{--sponsors--}}
     <div id="mainSponsors">
         <div id="{{trans('app.sponsors')}}">
             <div id="mainTitle">
                 {{trans('app.sponsors')}}
-            </div>
-        </div>
-    </div>
-
-    {{--time and location--}}
-    <div id="mainTimeLocation">
-        <div id="{{trans('app.time-and-location')}}">
-            <div id="mainTitle">
-                {{trans('app.time-and-location')}}
             </div>
         </div>
     </div>
