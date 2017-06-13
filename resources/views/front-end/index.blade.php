@@ -44,8 +44,8 @@
             @foreach($pages as $page)
                 @if(isset($page['pages_categories_id']) && $page['name']=='Apie')
                     @foreach($page['translations'] as $translations)
-                        <div id="aboutText">
-                            <img alt="{{$translations['description_long']}}">
+                        <div class="paragraph">
+                            <p>"{{$translations['description_long']}}"</p>
                         </div>
                     @endforeach
 
@@ -131,16 +131,24 @@
     {{--time and location--}}
     <div id="mainTimeLocation">
         <div id="{{trans('app.time-and-location')}}">
-            <div id="mainTitle">
+            <div class="headingBold">
                 {{trans('app.time-and-location')}}
             </div>
+            <div class="paragraph">
+                <p>Paroda veiks nuo kovo mėn. 1 d. iki gegužės mėn. 31d., Darbo laikas: darbo dienomis nuo 11 val.
+                    iki 22 val., savaitgaliais nuo 10 val. iki 22 val. Paroda vyksta, Vilniuje PC “Akropolis”,
+                    2-ame aukšte, prie knygyno “Pegasas”. Bilietus galite įsigyti tiek parodos kasoje, tiek internetu."</p>
+            </div>
+
+            <div id="googleMap"></div>
+
         </div>
     </div>
 
     {{--contacts--}}
     <div id="mainContacts">
         <div id="{{trans('app.contacts')}}">
-            <div id="mainTitle">
+            <div class="heading">
                 {{trans('app.contacts')}}
             </div>
         </div>
@@ -157,3 +165,22 @@
 
 @endsection
 
+<script>
+    function myMap() {
+
+        var mapProp= {
+            center:new google.maps.LatLng(54.711203,25.261813),
+            zoom:16
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        var marker = new google.maps.Marker({
+            position: mapProp['center'],
+            map: map,
+            title:"Hello World!"
+        });
+
+
+    }
+</script>

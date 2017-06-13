@@ -1,7 +1,10 @@
 @extends('front-end.reservation.mainReservation')
 
 @section('content')
-    Please select the date of your reservation
+
+    <div class="heading">
+        Please select the date of your reservation
+    </div>
 
     <div id="mainReservationDates" class="col-md-12">
         <div class="row">
@@ -14,7 +17,6 @@
             @endforeach
         </div>
     </div>
-
 
         <form method="POST" action="{{route('app.usersReservations.store')}}">
             <h4 id="accordion" role="tablist" aria-multiselectable="true">
@@ -34,9 +36,7 @@
                 @foreach($days as $day)
                     @if($day == $date_from_url)
 
-                        <div class="displayChosenDate">
-                            <h4> Your selected date: <br> {{$day}}</h4>
-                        </div>
+                        <div class="heading">Your selected date: <br> {{$day}}</div>
 
                         @if(isset($experiences))
                             @foreach($experiences as $experience)
@@ -127,7 +127,7 @@
                         <input id="reservationSubmitButton" class="btn btn-outline-primary submit-button" type="submit">
                     </div>
                 </div>
-            </div>
+
         </form>
 @endsection
 

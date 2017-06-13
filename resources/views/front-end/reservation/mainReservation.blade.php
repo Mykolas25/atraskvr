@@ -8,8 +8,8 @@
 
 <body>
 
-<div class="container-fluid">
-@yield('content')
+<div class="container-fluid" id="reservationBody">
+    @yield('content')
 </div>
 
 @include('front-end.includes.js')
