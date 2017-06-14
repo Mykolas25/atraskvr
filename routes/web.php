@@ -18,8 +18,8 @@ Route::get( '/', function () {
 });
 
 
-Route::get('login/google', ['as' => 'social.redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
-Route::get('login/google/callback', ['as' => 'social.handle','uses' => 'Auth\LoginController@handleProviderCallback']);
+Route::get('login/google', 'VRSocialAuthController@redirectToProvider')->name('login.google');
+Route::get('login/google/callback','VRSocialAuthController@handleProviderCallback');
 
 
 //$s = 'social.';
