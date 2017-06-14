@@ -54,9 +54,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => 'your-google-app-id',
-        'client_secret' => 'your-google-app-secret',
-        'redirect' => 'http://your-callback-url',
+        'client_id'     => env('GOOGLE_ID'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect'      => env('GOOGLE_REDIRECT')
     ],
 
     'github' => [
@@ -70,5 +70,6 @@ return [
         'client_secret' => 'your-bitbucket-app-secret',
         'redirect' => 'http://your-callback-url',
     ],
+
 
 ];

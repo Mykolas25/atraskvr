@@ -18,8 +18,13 @@ Route::get( '/', function () {
 });
 
 
-Route::get('login/google', 'Auth\LoginController@redirectToProvider');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/google', ['as' => 'social.redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('login/google/callback', ['as' => 'social.handle','uses' => 'Auth\LoginController@handleProviderCallback']);
+
+
+//$s = 'social.';
+//Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\SocialController@getSocialRedirect']);
+//Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\SocialController@getSocialHandle']);
 
 
 
@@ -295,14 +300,14 @@ Route::group(['prefix' => 'users'], function () {
 
 
 
-Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function() {
-
-    Route::get('/', [
-        'as' => 'frontend.index',
-        'uses' => 'FrontEndController@index'
-    ]);
-
-});
+//Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function() {
+//
+//    Route::get('/', [
+//        'as' => 'frontend.index',
+//        'uses' => 'FrontEndController@index'
+//    ]);
+//
+//});
 
 
 Auth::routes();

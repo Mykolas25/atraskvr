@@ -23,6 +23,7 @@ class LoginController extends Controller
     public function redirectToProvider()
     {
         return Socialite::driver('google')->redirect();
+
     }
 
     /**
@@ -33,6 +34,11 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+        $user->getAvatar();
 
         // $user->token;
     }
