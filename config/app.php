@@ -181,6 +181,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Socialite
+         */
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*

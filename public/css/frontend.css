@@ -13,7 +13,7 @@ body {
     font-size: 50px;
     font-weight: bold;
 
-    border:black solid 1px;
+    /*border:black solid 1px;*/
 }
 
 .heading
@@ -334,7 +334,7 @@ body {
 
 #mainTimeLocation
 {
-    border:2px red solid;
+    /*border:2px red solid;*/
 }
 
 #googleMap
@@ -421,7 +421,6 @@ body {
 
 }
 
-
 .irregular-shape {
 
     width: 100%;
@@ -432,7 +431,6 @@ body {
     background: url("../images/irregular_shape.png") no-repeat center center;
 
 }
-
 
 
 

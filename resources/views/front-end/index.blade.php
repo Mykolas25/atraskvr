@@ -70,7 +70,6 @@
 
                         @if($page['id'] == $translations['pages_id'])
                             @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
-
             {{--navigating from menu ropdown on click --}}
                             <div id="{{trans($translations['slug'])}}">
                                 <div id="experiencesMain">

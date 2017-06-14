@@ -27,8 +27,6 @@ class FrontEndController extends Controller
         return view('front-end.index', $configuration);
     }
 
-
-
     public function mediaFiles($data)
     {
         $imgArray = [];
@@ -57,13 +55,6 @@ class FrontEndController extends Controller
         }
         return $config;
     }
-
-
-
-
-
-
-
 
     /**
      * Show the form for creating a new resource.

@@ -11,5 +11,5 @@ return [
     'rooms' => 'kambariai',
     'contacts' => 'kontaktai',
     'tickets' => 'bilietai',
-    'time-and-location' => 'vieta-ir-laikas',
+    'time-and-location' => 'Vieta ir laikas',
 ];
