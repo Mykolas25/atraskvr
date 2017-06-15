@@ -16,6 +16,7 @@
         </div>
     </div>
 
+
     {{--About--}}
     <div id="mainAbout">
         <div id="{{trans('app.about')}}">

@@ -17,7 +17,7 @@ class VRUsers extends Authenticatable
 
     protected $table = 'vr_users';
 
-    protected $fillable = ['id', 'name', 'surname', 'password', 'email', 'phone'];
+    protected $fillable = ['id', 'name', 'first_name', 'last_name', 'password', 'email', 'phone'];
 
     public $incrementing = false;
 

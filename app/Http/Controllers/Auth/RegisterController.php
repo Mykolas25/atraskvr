@@ -49,7 +49,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:vr_users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -63,16 +64,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         {
-            return VRUsers::create([
+            $record = VRUsers::create([
                 'id' => Uuid::uuid4(),
-                'name' => $data['name'],
-                'surname' => $data['surname'],
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'name' => $data['first_name'] . " " . $data['last_name'],
                 'phone' => $data['phone'],
                 'email' => $data['email'],
-                'password' => bcrypt($data['password']),
+                'password' => bcrypt($data['password'])
             ]);
+
+            $record -> connection()-> sync(['user']);
+
+            return $record;
+
         }
     }
 }

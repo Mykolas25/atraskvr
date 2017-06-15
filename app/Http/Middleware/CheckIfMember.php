@@ -26,9 +26,6 @@ class CheckIfMember
 
         return abort(403, "no permission!");
 
-
-
-
 //
 //        if (Auth::check() && Auth::user()->user()) {
 //            return $next($request);

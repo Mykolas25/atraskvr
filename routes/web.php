@@ -13,9 +13,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get( '/', function () {
-    return view('welcome');
-});
+//Route::get( '/', function () {
+//    return view('welcome');
+//});
 
 
 Route::get('login/google', 'VRSocialAuthController@redirectToProvider')->name('login.google');
@@ -295,21 +295,15 @@ Route::group(['prefix' => 'users'], function () {
     });
 });
 
-
-
-
-
-
-//Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function() {
-//
-//    Route::get('/', [
-//        'as' => 'frontend.index',
-//        'uses' => 'FrontEndController@index'
-//    ]);
-//
-//});
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
+
+
+Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function() {
+    Route::group(['middleware' => ['check-role-member']], function () {
+        Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
+        });
+});
+
+//Route::get('/home', 'HomeController@index')->name('home');
