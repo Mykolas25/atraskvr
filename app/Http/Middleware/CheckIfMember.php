@@ -18,13 +18,18 @@ class CheckIfMember
      */
     public function handle($request, Closure $next)
     {
+
         $roles = auth()->user()->rolesConnections->pluck('roles_id')->toArray();
 
         if(in_array("user", $roles) or in_array("check-role-member", $roles))
 
             return $next($request);
+        else
+//            return redirect('/');
 
-        return abort(403, "no permission!");
+
+
+            return abort(403, "no permission!");
 
 //
 //        if (Auth::check() && Auth::user()->user()) {

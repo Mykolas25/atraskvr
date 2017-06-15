@@ -297,13 +297,16 @@ Route::group(['prefix' => 'users'], function () {
 
 Auth::routes();
 
+
 Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
 
+Route::get('/home', ['middleware' => ['check-role-member'] , 'as' => 'frontend.index', 'uses' => 'FrontEndController@index'])->name('home');
 
-Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function() {
-    Route::group(['middleware' => ['check-role-member']], function () {
-        Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
-        });
-});
+//Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function()
+//{
+////    Route::group(['middleware' => ['check-role-member']], function () {
+//    Route::get('/home', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index'])->name('home');
+////        });
+//});
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/user', 'FrontEndController@index')->name('home');
