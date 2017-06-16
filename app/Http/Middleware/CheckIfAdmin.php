@@ -17,15 +17,9 @@ class CheckIfAdmin
     {
         if (in_array("super-admin", auth()->user()->rolesConnections->pluck('roles_id')->toArray()))
             return $next($request);
-
         return redirect('home');
-
     }
-
 }
-
-
-
 //    public function handle($request, Closure $next, $guard = null)
 //    {
 //        if(in_array("admin", auth()->user()->rolesConnections->pluck('roles_id')->toArray()))

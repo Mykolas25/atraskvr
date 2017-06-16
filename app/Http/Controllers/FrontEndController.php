@@ -17,14 +17,20 @@ class FrontEndController extends Controller
      */
 
 
-    public function index()
+    public function pageData()
     {
         $configuration['menu'] = VRMenusTranslations::where('languages_id', app()->getLocale())->get()->toArray();
         $configuration['pagesLang'] = VRPagesTranslations::where('languages_id', app()->getLocale())->get()->toArray();
+
         $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->where('deleted_at','=', null)->get()->toArray();
         $configuration['aboutMedia'] =  $this->mediaFiles($configuration['pages']);
 
-        return view('front-end.index', $configuration);
+        return $configuration;
+    }
+
+    public function index()
+    {
+        return view('front-end.index', $this-> pageData());
     }
 
     public function mediaFiles($data)
@@ -85,7 +91,8 @@ class FrontEndController extends Controller
      */
     public function show($id)
     {
-        //
+        $experienceId['id'] = $id;
+        return view('front-end.experience', $this-> pageData(), $experienceId);
     }
 
     /**

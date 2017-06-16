@@ -22,7 +22,6 @@ class SocialAccountService
         $account = VRSocialAccountModel::whereOauth_provider('google')
             ->whereOauth_uid($providerUser->getId())
             ->first();
-
         if ($account) {
             return $account->user;
         } else {
@@ -32,6 +31,7 @@ class SocialAccountService
             ]);
 
            $user = VRUsers::whereEmail($providerUser->getEmail())->first();
+
             if (!$user) {
 
                 $fullName = $providerUser->getName();
@@ -51,8 +51,8 @@ class SocialAccountService
 //
                 $account->user()->associate($user)->toArray();
                 $account->save();
-                return $user;
+
             }
-        }
+        }  return $user;
     }
 }

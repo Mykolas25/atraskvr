@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::get('login/google', 'VRSocialAuthController@redirectToProvider')->name('login.google');
-Route::get('login/google/callback','VRSocialAuthController@handleProviderCallback');
+
 
 
 //$s = 'social.';
@@ -300,7 +299,18 @@ Auth::routes();
 
 Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
 
-Route::get('/home', ['middleware' => ['check-role-member'] , 'as' => 'frontend.index', 'uses' => 'FrontEndController@index'])->name('home');
+Route::group(['prefix' => '{id}'], function () {
+    Route::get('/{slug}', ['as' => 'app.experience.show', 'uses' => 'FrontEndController@show']);
+});
+
+
+Route::get('/home', ['middleware' => ['check-role-member'], 'as' => 'frontend.index', 'uses' => 'FrontEndController@index'])->name('home');
+
+
+
+Route::get('login/google', 'VRSocialAuthController@redirectToProvider')->name('login.google');
+Route::get('login/google/callback','VRSocialAuthController@handleProviderCallback');
+
 
 //Route::group(['prefix' => '{language}', 'middleware' => ['check-language']],  function()
 //{

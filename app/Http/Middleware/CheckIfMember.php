@@ -21,13 +21,11 @@ class CheckIfMember
 
         $roles = auth()->user()->rolesConnections->pluck('roles_id')->toArray();
 
-        if(in_array("user", $roles) or in_array("check-role-member", $roles))
+        if(in_array("user", $roles) or in_array("check-role-member", $roles) or in_array("super-admin", $roles))
 
             return $next($request);
         else
 //            return redirect('/');
-
-
 
             return abort(403, "no permission!");
 

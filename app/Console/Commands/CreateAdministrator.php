@@ -25,14 +25,15 @@ class CreateAdministrator extends Command
 
         $record = VRUsers::create([
             'id' => Uuid::uuid4(),
-            'name' => $name = $this->ask('Please provide name'),
-            'surname' => 'pavarde',
-            'email' => $email = $this->ask('Please provide email'),
-            'phone' => 86868686,
-            'password' => bcrypt($password = $this->secret('Please provide password')),
+            'first_name' => $first_name = $this->ask('Please provide first name'),
+            'last_name' => $last_name = $this->ask('Please provide last name'),
+            'name' => $first_name . " " . $last_name,
+            'email' => $this->ask('Please provide email'),
+            'phone' => $this->ask('Please provide phone'),
+            'password' => bcrypt($password = $this->secret('Please provide password'))
         ]);
 
-        $record -> connection()-> sync('super-admin');
+        $record -> connection() -> sync('super-admin');
 
         $this->comment("Great success!");
     }

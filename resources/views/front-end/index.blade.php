@@ -1,6 +1,7 @@
 @extends('front-end.main')
 
 @section('content')
+
     <div class="container-fluid">
         <div id="page-1">
             <div id="{{trans('app.main')}}">
@@ -56,7 +57,6 @@
         </div>
     </div>
 
-
     {{--Virtual rooms--}}
     <div id="{{trans('app.rooms')}}">
         <div id="VRRooms">
@@ -68,7 +68,6 @@
             {{--<div id="mainMainExperience">--}}
                 @foreach($pages as $page)
                     @foreach($pagesLang as $translations)
-
                         @if($page['id'] == $translations['pages_id'])
                             @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
             {{--navigating from menu ropdown on click --}}
@@ -83,26 +82,21 @@
                                                 <div id="descriptionMain">
                                                     <div class="description">
                                                         <div id="experienceName">
-                                                                <p>{{$translations['title']}}</p>
+                                                            <p>{{$translations['title']}}</p>
                                                         </div>
                                                         {{$translations['description_short']}}
                                                     </div>
                                                 </div>
-
                                         <div class="experienceImage">
-                                            <img src="{{asset($page['resource_image']['path'])}}">
+                                            <a href="/{{$page['id']}}/{{trans($translations['slug'])}}"><img src="{{asset($page['resource_image']['path'])}}"></a>
                                         </div>
-
                                        </div>
                                 </div>
-
-                        </div>
+                             </div>
                             @endif
                         @endif
                     @endforeach
-
                 @endforeach
-
         </div>
     </div>
 </div>
@@ -180,7 +174,5 @@
             map: map,
             title:"Hello World!"
         });
-
-
     }
 </script>

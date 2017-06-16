@@ -20,18 +20,24 @@ class VRSocialAuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(Request $request, SocialAccountService $service)
+    public function handleProviderCallback(SocialAccountService $service)
     {
-        $state = $request->get('state');
-        $request->session()->put('state',$state);
-      try {
+//        $state = $request->get('state');
+//        $request->session()->put('state',$state);
+//
+//      try {
+//
         $user = $service->createOrGetUser(Socialite::driver('google')->user());
+
         auth()->login($user);
+
         return redirect()->to('/home');
-          }catch (Exception $e) {
-            return redirect('auth/facebook');
-        session()->regenerate();
-    }
+//
+//        return redirect()->to('/home');
+//          }catch (Exception $e) {
+//            return redirect('auth/google');
+////        session()->regenerate();
+
 }
 
 //    public function handleProviderCallback(Request $request, SocialAccountService $service)
