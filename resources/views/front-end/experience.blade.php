@@ -1,38 +1,39 @@
 @extends('front-end.main')
 
 @section('content')
+
     @foreach($pages as $page)
-        @if($page['id'] == $id)
             @foreach($pagesLang as $translations)
-                @if($page['id'] == $translations['pages_id'])
-                    @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
-                        {{--navigating from menu ropdown on click --}}
-                        <div id="{{trans($translations['slug'])}}">
-                            <div id="experiencesMain">
-                                {{--counting loops for interchannging colors in experiance div--}}
-                                @if($loop->iteration %2 == 0)
-                                    <div class="experienceWhite">
-                                        @else
-                                            <div class="experienceBlack">
-                                                @endif
-                                                <div id="descriptionMain">
-                                                    <div class="description">
-                                                        <div id="experienceName">
-                                                            <p>{{$translations['title']}}</p>
+                    @if($page['id'] == $translations['pages_id'])
+                        @if($translations['slug'] == $slug)
+                        @if(isset($page['pages_categories_id']) && isset($page['resource_image']['path']) &&  $page['pages_categories_id']== 'vr_categories_id')
+                            {{--navigating from menu ropdown on click --}}
+                            <div id="{{trans($translations['slug'])}}">
+                                <div id="experiencesMain">
+                                    {{--counting loops for interchannging colors in experiance div--}}
+                                    @if($loop->iteration %2 == 0)
+                                        <div class="experienceWhite">
+                                            @else
+                                                <div class="experienceBlack">
+                                                    @endif
+                                                    <div id="descriptionMain">
+                                                        <div class="description">
+                                                            <div id="experienceName">
+                                                                <p>{{$translations['title']}}</p>
+                                                            </div>
+                                                            {{$translations['description_long']}}
                                                         </div>
-                                                        {{$translations['description_long']}}
+                                                    </div>
+                                                    <div class="experienceImage">
+                                                        <a href=""><img src="{{asset($page['resource_image']['path'])}}"></a>
                                                     </div>
                                                 </div>
-                                                <div class="experienceImage">
-                                                    <a href=""><img src="{{asset($page['resource_image']['path'])}}"></a>
-                                                </div>
-                                            </div>
-                                    </div>
-                            </div>
+                                        </div>
+                                </div>
+                        @endif
                     @endif
                 @endif
             @endforeach
-        @endif
     @endforeach
     {{--<div class="container-fluid">--}}
         {{--<div id="page-1">--}}

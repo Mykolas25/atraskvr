@@ -88,7 +88,7 @@
                                                     </div>
                                                 </div>
                                         <div class="experienceImage">
-                                            <a href="/{{$page['id']}}/{{trans($translations['slug'])}}"><img src="{{asset($page['resource_image']['path'])}}"></a>
+                                            <a href="{{route('app.experience.show', ['language'=>$locale,'slug'=>trans($translations['slug'])])}}"><img src="{{asset($page['resource_image']['path'])}}"></a>
                                         </div>
                                        </div>
                                 </div>

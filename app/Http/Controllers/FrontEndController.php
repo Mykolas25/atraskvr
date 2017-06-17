@@ -7,23 +7,53 @@ use App\Models\VRMenusTranslations;
 use App\Models\VRPages;
 use App\Models\VRPagesTranslations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class FrontEndController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param $url
+     * @internal param $lang
+     * @internal param $lang
      */
+
+    public function change(Request $request)
+    {
+        $data = $request->toArray();
+        $langArray = ['en','lt'];
+
+        $array = ( explode( '/', $data['url']) );
+
+        if(in_array('en' || 'lt', $array))
+        {   $getLanguegeValue = array_intersect($langArray, $array);
+//            dd($getLanguegeValue);
+            $key = array_search($getLanguegeValue['1'], $array);
+
+            $array[$key] = $data['lang'];
+        }
+        $newUrl = implode('/', $array);
+
+        app()->setLocale($data['lang']);
+//        dd(app()->getLocale());
+//    dd($newUrl);
+       return redirect($newUrl);
+    }
 
 
     public function pageData()
     {
+
         $configuration['menu'] = VRMenusTranslations::where('languages_id', app()->getLocale())->get()->toArray();
         $configuration['pagesLang'] = VRPagesTranslations::where('languages_id', app()->getLocale())->get()->toArray();
-
         $configuration['pages'] = VRPages::with('resourceImage','pagesConnectedImages', 'translations')->where('deleted_at','=', null)->get()->toArray();
         $configuration['aboutMedia'] =  $this->mediaFiles($configuration['pages']);
+        $configuration['locale'] = app()->getLocale();
+
+//        $configuration['changeUrl'] = $this->change('var');
 
         return $configuration;
     }
@@ -86,12 +116,15 @@ class FrontEndController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $language
+     * @param $slug
      * @return \Illuminate\Http\Response
+     * @internal param $language
+     * @internal param int $slug
      */
-    public function show($id)
+    public function show($language, $slug)
     {
-        $experienceId['id'] = $id;
+        $experienceId['slug'] = $slug;
         return view('front-end.experience', $this-> pageData(), $experienceId);
     }
 

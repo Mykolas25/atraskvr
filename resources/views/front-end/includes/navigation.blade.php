@@ -36,8 +36,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('app.language')}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+
                             <li><a href="/lt">Lt</a></li>
                             <li><a href="/en">En</a></li>
+
+                           {{----}}
+                            {{--<li><a href="{{route('app.frontend.change', ['url' => Request::url(), 'lang'=>'lt'])}}">lt</a></li>--}}
+                            {{--<li><a href="{{route('app.frontend.change', ['url' => Request::url(), 'lang'=>'en'])}}">en</a></li>--}}
+
+
                         </ul>
                     </li>
 

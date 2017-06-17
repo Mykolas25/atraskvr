@@ -31,7 +31,7 @@ class VRSocialAuthController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to('/home');
+        return redirect()->to('/');
 //
 //        return redirect()->to('/home');
 //          }catch (Exception $e) {
