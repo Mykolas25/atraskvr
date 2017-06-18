@@ -53,14 +53,35 @@ class FrontEndController extends Controller
         $configuration['aboutMedia'] =  $this->mediaFiles($configuration['pages']);
         $configuration['locale'] = app()->getLocale();
 
-//        $configuration['changeUrl'] = $this->change('var');
+
+        return $configuration;
+    }
+
+    public function rooms()
+    {
+        $configuration = $this->pageData();
+
+        foreach ($configuration['pages'] as $page)
+        {
+            if($page['pages_categories_id'] == "vr_categories_id")
+            {
+                $configuration['rooms'][] = $page;
+                //$rooms - provides room pages and their translation data
+            }
+        }
+        foreach($configuration['pagesLang'] as $pagesLanguages)
+        {
+            $configuration['pagesLanguages'][] = $pagesLanguages;
+        }
+
+//dd($pagesLangueges);
 
         return $configuration;
     }
 
     public function index()
     {
-        return view('front-end.index', $this-> pageData());
+        return view('front-end.index', $this-> pageData(),$this->rooms());
     }
 
     public function mediaFiles($data)
@@ -91,6 +112,7 @@ class FrontEndController extends Controller
         }
         return $config;
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -125,7 +147,7 @@ class FrontEndController extends Controller
     public function show($language, $slug)
     {
         $experienceId['slug'] = $slug;
-        return view('front-end.experience', $this-> pageData(), $experienceId);
+        return view('front-end.experience', $this->rooms(),  $experienceId, $this-> pageData());
     }
 
     /**

@@ -11,40 +11,37 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 @foreach($menu as $menuItem)
+                    @if($menuItem['title'] != 'Virtualūs kambariai' && $menuItem['title'] != 'Virtual rooms')
 
-                    @if($menuItem['title'] == 'Virtualūs kambariai' || $menuItem['title'] == 'Virtual rooms')
-
+                        <li><a href="#{{$menuItem['slug']}}">{{$menuItem['title']}}</a></li>
+                    @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menuItem['title']}}<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                                @foreach($pagesLang as $translations)
-                                        <li><a href="#{{$translations['slug']}}">{{$translations['title']}}</a></li>
-                                @endforeach
-
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menuItem['title']}}</a>
+                            <ul class="dropdown-menu">
+                                @foreach($rooms as $room)
+                                    @foreach($pagesLanguages as $pageLanguage)
+                                       @if($room['id'] == $pageLanguage['pages_id'])
+                                         <li><a href="#{{$pageLanguage['slug']}}">{{$pageLanguage['title']}}</a></li>
+                                        @endif
+                                  @endforeach
+                             @endforeach
                             </ul>
                         </li>
-                    @else
-                        @if($menuItem['title'])
-                            {{--{{dd($menuItem['title'])}}--}}
-                               <li><a href="#{{$menuItem['slug']}}">{{$menuItem['title']}}</a></li>
-                        @endif
                     @endif
-
-                @endforeach
+             @endforeach
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('app.language')}}<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('app.language')}}</a>
                         <ul class="dropdown-menu">
 
                             <li><a href="/lt">Lt</a></li>
                             <li><a href="/en">En</a></li>
 
-                           {{----}}
-                            {{--<li><a href="{{route('app.frontend.change', ['url' => Request::url(), 'lang'=>'lt'])}}">lt</a></li>--}}
-                            {{--<li><a href="{{route('app.frontend.change', ['url' => Request::url(), 'lang'=>'en'])}}">en</a></li>--}}
+                            {{--<li><a href="{{route('app.frontend.change',['Lt', ]) }}">Lt</a></li>--}}
+                            {{--<li><a href="{{route('app.frontend.change', ['url' => Request::url(), 'lang'=>''])}}">lt</a></li>--}}
+                            {{--<li><a href="" id="chg" onclick="{{route('app.frontend.change'), 'en'}}">en</a></li>--}}
 
-
+                            {{--<td><a href="" id="del" onclick="deleteItem('{{route('app.' . $tableName . '.delete', $record['id'])}}')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o fa-sm"></i> Delete</a></td>--}}
                         </ul>
                     </li>
 

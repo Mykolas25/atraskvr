@@ -296,16 +296,12 @@ Route::group(['prefix' => 'users'], function () {
 
 Auth::routes();
 
-
-
 Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
-Route::get('/change', ['as' => 'app.frontend.change', 'uses' => 'FrontEndController@change']);
 
-Route::group(['prefix' => '{language?}','middleware' => ['check-language']], function()
+Route::group(['prefix' => '/{language?}','middleware' => ['check-language']], function()
 {
     Route::get('/', ['as' => 'frontend.index', 'uses' => 'FrontEndController@index']);
-    Route::get('/{slug}', ['as' => 'app.experience.show', 'uses' => 'FrontEndController@show']);
-
+    Route::get('/{slug?}', ['as' => 'app.experience.show', 'uses' => 'FrontEndController@show']);
 
 });
 
@@ -322,6 +318,6 @@ Route::get('login/google/callback','VRSocialAuthController@handleProviderCallbac
 ////        });
 //});
 //
-//Route::get('/user', 'FrontEndController@index')->name('home');
+
 
 
